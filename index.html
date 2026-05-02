@@ -3,18 +3,186 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>أكاديمية المهندس علي المعموري</title>
+    <title>أكاديمية المهندس علي المعموري | المنصة التعليمية</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/all.min.css">
     <style>
-        body { font-family: sans-serif; text-align: center; background-color: #0f172a; color: white; display: flex; align-items: center; justify-content: center; height: 100vh; margin: 0; }
-        .box { background: #1e293b; padding: 30px; border-radius: 12px; box-shadow: 0 5px 15px rgba(0,0,0,0.3); }
-        .btn { display: inline-block; background: #38bdf8; color: #0f172a; padding: 12px 25px; text-decoration: none; border-radius: 8px; font-weight: bold; margin-top: 20px; }
+        :root {
+            --primary-color: #38bdf8;
+            --bg-dark: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f8fafc;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Cairo', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        /* Header & Navigation */
+        nav {
+            padding: 20px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(15, 23, 42, 0.9);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 900;
+            color: var(--primary-color);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 90vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 20px;
+            background: radial-gradient(circle at center, #1e293b 0%, #0f172a 100%);
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            background: linear-gradient(to left, #fff, var(--primary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: #94a3b8;
+            max-width: 600px;
+            margin-bottom: 30px;
+        }
+
+        .btn-main {
+            background: var(--primary-color);
+            color: var(--bg-dark);
+            padding: 15px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.2rem;
+            transition: 0.3s transform, 0.3s box-shadow;
+            display: inline-block;
+        }
+
+        .btn-main:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(56, 189, 248, 0.3);
+        }
+
+        /* Features Section */
+        .features {
+            padding: 80px 5%;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .feature-card {
+            background: var(--card-bg);
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            border: 1px solid rgba(255,255,255,0.05);
+            transition: 0.3s;
+        }
+
+        .feature-card:hover {
+            border-color: var(--primary-color);
+        }
+
+        .feature-card i {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        .feature-card h3 {
+            margin-bottom: 15px;
+        }
+
+        /* Footer */
+        footer {
+            padding: 40px;
+            text-align: center;
+            background: #020617;
+            border-top: 1px solid var(--card-bg);
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            margin: 0 15px;
+            transition: 0.3s;
+        }
+
+        .social-links a:hover {
+            color: var(--primary-color);
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.2rem; }
+        }
     </style>
 </head>
 <body>
-    <div class="box">
+
+    <nav>
+        <div class="logo">أكاديمية المعموري</div>
+        <div class="social-links">
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-telegram"></i></a>
+        </div>
+    </nav>
+
+    <header class="hero">
         <h1>أكاديمية المهندس علي المعموري</h1>
-        <p>اضغط أدناه للدخول إلى المنصة التعليمية</p>
-        <a href="https://Alikhalid.pythonanywhere.com" class="btn">دخول المنصة</a>
-    </div>
+        <p>المنصة التعليمية الأولى لطلبة الإعدادية والمهني. دروس تفاعلية، مراجعات مركزية، وطرق تدريس حديثة تضمن لك النجاح.</p>
+        <a href="https://Alikhalid.pythonanywhere.com" class="btn-main">دخول المنصة التعليمية</a>
+    </header>
+
+    <section class="features">
+        <div class="feature-card">
+            <i class="fas fa-video"></i>
+            <h3>محاضرات 4K</h3>
+            <p>شرح مفصل للمادة العلمية بأحدث التقنيات البصرية لسهولة الفهم.</p>
+        </div>
+        <div class="feature-card">
+            <i class="fas fa-file-alt"></i>
+            <h3>ملخصات ذكية</h3>
+            <p>ملازم ومخلصات مركزة تغنيك عن المصادر الخارجية وتضمن لك الدرجة كاملة.</p>
+        </div>
+        <div class="feature-card">
+            <i class="fas fa-user-graduate"></i>
+            <h3>متابعة مستمرة</h3>
+            <p>نظام امتحانات دورية وتقييم للمستوى لضمان تطور الطالب الدراسي.</p>
+        </div>
+    </section>
+
+    <footer>
+        <p>جميع الحقوق محفوظة للأكاديمية &copy; 2026</p>
+        <p style="font-size: 0.8rem; margin-top: 10px; color: #64748b;">تطوير وبرمجة المهندس علي المعموري</p>
+    </footer>
+
 </body>
 </html>
