@@ -146,12 +146,11 @@ body{
     background:#00f2fe;
     color:#000;
     transform:scale(1.05);
-    box-shadow:0 0 20px #00f2fe;
 }
 
-/* ===================== */
-/* التواصل تحت خط واحد */
-/* ===================== */
+/* ========================= */
+/* 🔥 التواصل (رجع كامل + تفاعل) */
+/* ========================= */
 
 .social-line{
     position:fixed;
@@ -162,11 +161,11 @@ body{
     display:flex;
     justify-content:center;
     align-items:center;
-    gap:35px;
+    gap:40px;
 
     padding:12px;
 
-    background:rgba(5,8,17,0.7);
+    background:rgba(5,8,17,0.75);
     backdrop-filter:blur(10px);
 
     border-top:1px solid rgba(0,242,254,0.2);
@@ -176,7 +175,8 @@ body{
 
 .social-line a{
     color:#fff;
-    font-size:1.4rem;
+    font-size:1.5rem;
+
     position:relative;
     transition:0.3s;
 }
@@ -186,15 +186,17 @@ body{
     position:absolute;
     bottom:-6px;
     left:0;
+
     width:0%;
     height:2px;
+
     background:#00f2fe;
     transition:0.3s;
 }
 
 .social-line a:hover{
     color:#00f2fe;
-    transform:translateY(-3px);
+    transform:translateY(-4px) scale(1.1);
 }
 
 .social-line a:hover::after{
@@ -241,7 +243,9 @@ body{
 
 <div class="robot-emoji">🤖</div>
 
-<div class="speech-bubble" id="speech">مرحباً 👋 أنا أشرح عن الموقع</div>
+<div class="speech-bubble" id="speech">
+مرحباً 👋 أنا أشرح عن الموقع
+</div>
 
 <div class="profile-wrapper">
 <img src="profile.jpg">
@@ -259,14 +263,14 @@ body{
 
 </div>
 
-<!-- التواصل -->
+<!-- 🔥 التواصل (رجع كامل) -->
 <div class="social-line">
 
-<a href="https://instagram.com/x.5qe">
+<a href="https://instagram.com/x.5qe" target="_blank">
 <i class="fa-brands fa-instagram"></i>
 </a>
 
-<a href="https://t.me/c99ol">
+<a href="https://t.me/c99ol" target="_blank">
 <i class="fa-brands fa-telegram"></i>
 </a>
 
@@ -278,6 +282,7 @@ body{
 
 <script>
 
+/* زر الصوت */
 const video = document.getElementById("bgVideo");
 const btn = document.getElementById("sound-toggle");
 
