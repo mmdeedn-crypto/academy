@@ -12,7 +12,6 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
 
 <style>
 
-/* الأساس */
 *{
     margin:0;
     padding:0;
@@ -58,13 +57,13 @@ body{
 /* الكارت */
 .cyber-card{
     width:100%;
-    max-width:420px;
+    max-width:430px;
     text-align:center;
 
     backdrop-filter:blur(8px);
     background:rgba(255,255,255,0.03);
 
-    border:1px solid rgba(0,242,254,0.15);
+    border:1px solid rgba(0,242,254,0.12);
     border-radius:20px;
 
     padding:30px 20px;
@@ -85,24 +84,11 @@ body{
     margin-bottom:15px;
 }
 
-/* ===================== */
-/* الروبوت الجديد 🤖 */
-/* ===================== */
-
-.guide-character{
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    gap:10px;
-
-    margin-bottom:15px;
-}
-
-.guide-character img{
-    width:70px;
-    height:70px;
-
+/* الروبوت */
+.robot-emoji{
+    font-size:3rem;
     animation:float 2s infinite ease-in-out;
+    filter: drop-shadow(0 0 10px #00f2fe);
 }
 
 @keyframes float{
@@ -110,6 +96,7 @@ body{
     50%{ transform:translateY(-8px); }
 }
 
+/* فقاعة الكلام */
 .speech-bubble{
     background:rgba(0,242,254,0.12);
     border:1px solid rgba(0,242,254,0.4);
@@ -118,16 +105,14 @@ body{
     border-radius:12px;
 
     font-size:0.8rem;
+    max-width:230px;
 
-    max-width:220px;
+    margin:10px auto 15px auto;
 
     backdrop-filter:blur(10px);
 }
 
-/* ===================== */
-/* الصورة + الإطار القديم */
-/* ===================== */
-
+/* الصورة */
 .profile-wrapper{
     position:relative;
     width:140px;
@@ -150,12 +135,9 @@ body{
     left:-10px;
     width:160px;
     height:160px;
-
     border-radius:50%;
-
     border-top:2px solid #00f2fe;
     border-bottom:2px solid rgba(0,242,254,0.3);
-
     animation:spin 2s linear infinite;
 }
 
@@ -165,11 +147,8 @@ body{
     left:-18px;
     width:176px;
     height:176px;
-
     border-radius:50%;
-
     border:2px dashed rgba(0,242,254,0.25);
-
     animation:spinReverse 4s linear infinite;
 }
 
@@ -183,7 +162,7 @@ body{
     to{ transform:rotate(0deg); }
 }
 
-/* النصوص */
+/* النص */
 .main-title{
     font-size:2.2rem;
     margin-bottom:10px;
@@ -200,7 +179,6 @@ body{
     display:flex;
     justify-content:center;
     align-items:center;
-
     gap:10px;
 
     padding:12px;
@@ -212,13 +190,69 @@ body{
     color:#00f2fe;
     text-decoration:none;
 
-    margin-bottom:15px;
+    margin-bottom:20px;
+}
+
+/* ========================= */
+/* خط التواصل تحت فقط 🔥 */
+/* ========================= */
+
+.social-line{
+    position:fixed;
+    bottom:0;
+    left:0;
+    width:100%;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:25px;
+
+    padding:12px 0;
+
+    background:rgba(5,8,17,0.6);
+    backdrop-filter:blur(10px);
+
+    border-top:1px solid rgba(0,242,254,0.2);
+}
+
+.social-line a{
+    color:#fff;
+    font-size:1.3rem;
+
+    position:relative;
+    text-decoration:none;
+
+    transition:0.3s;
+}
+
+.social-line a::after{
+    content:"";
+    position:absolute;
+    bottom:-6px;
+    left:0;
+
+    width:0%;
+    height:2px;
+
+    background:#00f2fe;
+
+    transition:0.3s;
+}
+
+.social-line a:hover{
+    color:#00f2fe;
+    transform:translateY(-3px);
+}
+
+.social-line a:hover::after{
+    width:100%;
 }
 
 /* زر الصوت */
 #sound-toggle{
     position:fixed;
-    bottom:20px;
+    bottom:60px;
     left:20px;
 
     width:55px;
@@ -253,17 +287,14 @@ body{
 
 <div class="cyber-card">
 
-<!-- الروبوت -->
-<div class="guide-character">
-<img src="robot.png" alt="bot">
+<div class="badge">المهندس علي المعموري_</div>
+
+<div class="robot-emoji">🤖</div>
+
 <div class="speech-bubble" id="speech">
 مرحباً 👋 أنا أشرح عن الموقع
 </div>
-</div>
 
-<div class="badge">المهندس علي المعموري_</div>
-
-<!-- الصورة -->
 <div class="profile-wrapper">
 <img src="profile.jpg">
 <div class="ring"></div>
@@ -274,8 +305,23 @@ body{
 
 <p class="subtitle">منصة تعليم الأمن السيبراني</p>
 
-<a class="login-btn" href="#">
-دخول النظام
+<a class="login-btn" href="#">دخول النظام</a>
+
+</div>
+
+<!-- خط التواصل تحت -->
+<div class="social-line">
+
+<a href="https://instagram.com/x.5qe">
+<i class="fa-brands fa-instagram"></i>
+</a>
+
+<a href="https://t.me/c99ol">
+<i class="fa-brands fa-telegram"></i>
+</a>
+
+<a href="mailto:mmdeedn@gmail.com">
+<i class="fa-solid fa-envelope"></i>
 </a>
 
 </div>
@@ -289,7 +335,6 @@ const wrapper = document.querySelector(".profile-wrapper");
 
 video.volume = 1;
 
-/* الصوت */
 btn.addEventListener("click", async () => {
 
     video.muted = !video.muted;
@@ -304,7 +349,6 @@ btn.addEventListener("click", async () => {
 
 });
 
-/* نبض الصورة */
 let running = false;
 
 function startPulse(){
@@ -313,22 +357,17 @@ function startPulse(){
     running = true;
 
     function animate(){
+
         requestAnimationFrame(animate);
 
         if(video.muted){
             wrapper.style.transform = "scale(1)";
-            wrapper.style.filter = "none";
             return;
         }
 
         let beat = 1 + Math.random() * 0.05;
 
         wrapper.style.transform = `scale(${beat})`;
-
-        wrapper.style.filter = `
-            drop-shadow(0 0 10px #00f2fe)
-            drop-shadow(0 0 25px rgba(0,242,254,0.6))
-        `;
     }
 
     animate();
