@@ -3,282 +3,261 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>بوابة المطور | المهندس علي المعموري</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;900&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-    
+    <title>أكاديمية المطور | المهندس علي المعموري</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        :root {
-            --cyan: #00f3ff;
-            --purple: #bc13fe;
-            --dark-bg: #090a0f;
-            --card-bg: rgba(15, 17, 26, 0.85);
-            --text-main: #ffffff;
-            --text-muted: #8b9bb4;
-        }
-
         * {
-            box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: 'Tajawal', sans-serif;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
         body {
-            background-color: var(--dark-bg);
-            /* خلفية شبكية برمجية */
-            background-image: 
-                linear-gradient(rgba(0, 243, 255, 0.05) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(0, 243, 255, 0.05) 1px, transparent 1px);
-            background-size: 30px 30px;
+            background-color: #050811;
+            color: #fff;
             min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            padding: 20px;
             overflow-x: hidden;
+            padding: 20px;
         }
 
-        /* الشكل المميز للبطاقة بزوايا مقصوصة */
-        .tech-card {
-            position: relative;
-            background: var(--card-bg);
+        /* كود خلفية الفيديو الثابتة */
+        .background-video {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            z-index: -2;
+            transform: translate(-50%, -50%);
+            object-fit: cover;
+            filter: brightness(0.25) contrast(1.1); /* تقليل السطوع لبروز التصميم */
+        }
+
+        /* تأثير الشبكة البرمجية فوق الفيديو (اختياري ويعطي طابع سيبراني) */
+        .grid-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
             width: 100%;
-            max-width: 450px;
-            padding: 40px 30px;
-            /* قص الزوايا لشكل هندسي مميز */
-            clip-path: polygon(10% 0, 100% 0, 100% 90%, 90% 100%, 0 100%, 0 10%);
-            border: 1px solid rgba(0, 243, 255, 0.2);
-            text-align: center;
-            backdrop-filter: blur(10px);
-            animation: glitch-load 1s ease-out;
-        }
-
-        /* خطوط مضيئة تزيينية للبطاقة */
-        .tech-card::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 10%;
-            width: 50%; height: 2px;
-            background: var(--cyan);
-            box-shadow: 0 0 10px var(--cyan);
-        }
-
-        .tech-card::after {
-            content: '';
-            position: absolute;
-            bottom: 0; right: 10%;
-            width: 50%; height: 2px;
-            background: var(--purple);
-            box-shadow: 0 0 10px var(--purple);
-        }
-
-        @keyframes glitch-load {
-            0% { opacity: 0; transform: scale(0.95) translateY(20px); }
-            100% { opacity: 1; transform: scale(1) translateY(0); }
-        }
-
-        /* شارة المطور بستايل Terminal */
-        .dev-badge {
-            display: inline-block;
-            padding: 8px 16px;
-            background: rgba(0, 243, 255, 0.1);
-            color: var(--cyan);
-            font-family: 'Share Tech Mono', monospace;
-            font-size: 13px;
-            letter-spacing: 1px;
-            border-left: 3px solid var(--cyan);
-            margin-bottom: 25px;
-            text-transform: uppercase;
-        }
-
-        .dev-badge span {
-            font-family: 'Tajawal', sans-serif;
-            font-weight: 700;
-        }
-
-        /* نصوص الهيدر */
-        .header h1 {
-            color: var(--text-main);
-            font-size: 28px;
-            font-weight: 900;
-            margin-bottom: 10px;
-            text-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
-        }
-
-        .header p {
-            color: var(--text-muted);
-            font-size: 14px;
-            margin-bottom: 35px;
-        }
-
-        /* زر الدخول الرئيسي بتأثير النيون */
-        .btn-cyber {
-            position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 12px;
-            width: 100%;
-            padding: 18px;
-            background: transparent;
-            color: var(--cyan);
-            text-decoration: none;
-            font-size: 18px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            border: 1px solid var(--cyan);
-            cursor: pointer;
-            transition: 0.3s;
-            overflow: hidden;
-            margin-bottom: 35px;
-            clip-path: polygon(5% 0, 100% 0, 95% 100%, 0 100%);
-        }
-
-        .btn-cyber::before {
-            content: '';
-            position: absolute;
-            top: 0; left: -100%;
-            width: 100%; height: 100%;
-            background: var(--cyan);
-            transition: 0.4s;
+            height: 100%;
+            background-image: linear-gradient(rgba(18, 24, 38, 0.2) 1px, transparent 1px),
+                              linear-gradient(90deg, rgba(18, 24, 38, 0.2) 1px, transparent 1px);
+            background-size: 20px 20px;
             z-index: -1;
         }
 
-        .btn-cyber:hover {
-            color: var(--dark-bg);
-            box-shadow: 0 0 20px var(--cyan);
+        /* الحاوية الرئيسية (نفس اللي بالصورة بالضبط) */
+        .cyber-card {
+            background: rgba(10, 15, 26, 0.75); /* خلفية شبه شفافة لكي يظهر الفيديو من خلفها */
+            backdrop-filter: blur(8px); /* تأثير تغبيش خلف الكرت */
+            width: 100%;
+            max-width: 400px;
+            border: 1px solid rgba(0, 242, 254, 0.2);
+            padding: 30px 20px;
+            position: relative;
+            text-align: center;
+            border-radius: 4px;
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
         }
 
-        .btn-cyber:hover::before {
-            left: 0;
+        /* الخطوط المضيئة فوق وتحت الكرت */
+        .cyber-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 15%;
+            width: 50%;
+            height: 2px;
+            background: #00f2fe;
+            box-shadow: 0 0 10px #00f2fe;
         }
 
-        /* قسم وسائل التواصل */
-        .social-title {
-            color: var(--text-muted);
-            font-size: 12px;
-            margin-bottom: 15px;
-            letter-spacing: 2px;
+        .cyber-card::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 35%;
+            width: 40%;
+            height: 2px;
+            background: #b92b27;
+            box-shadow: 0 0 10px #b92b27;
+        }
+
+        /* شارة المهندس علي المعموري */
+        .badge {
+            background: rgba(0, 242, 254, 0.1);
+            border-right: 3px solid #00f2fe;
+            display: inline-block;
+            padding: 6px 15px;
+            color: #00f2fe;
+            font-size: 0.9rem;
+            font-weight: bold;
+            margin-bottom: 25px;
+            letter-spacing: 1px;
+        }
+
+        /* العناوين */
+        .main-title {
+            font-size: 2.2rem;
+            font-weight: 900;
+            margin-bottom: 12px;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+        }
+
+        .subtitle {
+            color: #8a99ad;
+            font-size: 0.95rem;
+            margin-bottom: 40px;
+            line-height: 1.6;
+        }
+
+        /* زر دخول النظام */
+        .login-btn-wrapper {
+            border-top: 1px solid rgba(0, 242, 254, 0.2);
+            border-bottom: 1px solid rgba(0, 242, 254, 0.2);
+            padding: 15px 0;
+            margin-bottom: 35px;
+        }
+
+        .login-btn {
+            color: #00f2fe;
+            text-decoration: none;
+            font-size: 1.3rem;
+            font-weight: bold;
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 10px;
+            transition: 0.3s ease;
         }
 
-        .social-title::before, .social-title::after {
-            content: '';
-            height: 1px;
-            width: 30px;
-            background: rgba(255,255,255,0.2);
+        .login-btn:hover {
+            text-shadow: 0 0 15px #00f2fe;
+            transform: scale(1.03);
         }
 
-        .social-grid {
-            display: grid;
-            gap: 12px;
-        }
-
-        .social-item {
+        /* عنوان قنوات الاتصال */
+        .divider {
             display: flex;
             align-items: center;
-            gap: 15px;
-            padding: 12px 20px;
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            color: var(--text-main);
-            text-decoration: none;
-            text-align: right;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
+            color: #56667a;
+            font-size: 0.85rem;
+            margin-bottom: 20px;
+        }
+        .divider::before, .divider::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: rgba(86, 102, 122, 0.3);
+            margin: 0 10px;
         }
 
-        /* تأثير إضاءة جانبي للحسابات */
-        .social-item::before {
-            content: '';
-            position: absolute;
-            top: 0; right: 0;
-            width: 3px; height: 100%;
-            background: transparent;
+        /* كروت وسائل التواصل */
+        .contact-item {
+            background: rgba(20, 27, 43, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 15px;
+            margin-bottom: 12px;
+            text-decoration: none;
+            color: #fff;
             transition: 0.3s;
         }
 
-        .social-item:hover {
-            background: rgba(255, 255, 255, 0.05);
-            transform: translateX(-5px);
+        .contact-item:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(255, 255, 255, 0.15);
         }
 
-        .instagram-link:hover::before { background: #fccc63; box-shadow: 0 0 10px #fccc63; }
-        .telegram-link:hover::before { background: #0088cc; box-shadow: 0 0 10px #0088cc; }
-        .email-link:hover::before { background: #ea4335; box-shadow: 0 0 10px #ea4335; }
+        /* الخط الذهبي الخاص بإنستغرام مثل الصورة */
+        .instagram-card {
+            border-left: 3px solid #f9bc2c; 
+        }
 
-        .social-item i {
-            font-size: 22px;
-            width: 30px;
-            text-align: center;
+        .contact-info {
+            text-align: right;
+        }
+
+        .contact-info span {
+            display: block;
+            font-size: 0.75rem;
+            color: #65758c;
+        }
+
+        .contact-info p {
+            font-size: 0.95rem;
+            font-weight: 500;
+            margin-top: 2px;
+        }
+
+        .contact-item i {
+            font-size: 1.4rem;
         }
         
-        .fa-instagram { color: #fccc63; }
-        .fa-telegram { color: #0088cc; }
+        .fa-instagram { color: #f9bc2c; }
+        .fa-telegram { color: #2ca5e0; }
         .fa-envelope { color: #ea4335; }
-
-        .social-text {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .social-label { font-size: 11px; color: var(--text-muted); }
-        .social-username { font-size: 15px; font-weight: 500; direction: ltr; font-family: 'Share Tech Mono', monospace; }
 
     </style>
 </head>
 <body>
 
-    <div class="tech-card">
-        <div class="dev-badge">
-            <i class="fas fa-terminal"></i> <span>المهندس علي المعموري</span>_
-        </div>
+    <video autoplay loop muted playsinline class="background-video">
+        <source src="video.mp4" type="video/mp4">
+    </video>
+
+    <div class="grid-overlay"></div>
+
+    <div class="cyber-card">
         
-        <div class="header">
-            <h1>أكاديمية المطور</h1>
-            <p>بوابة الدخول الآمنة للمنصة والخدمات البرمجية</p>
+        <div class="badge"> 
+            <i class="fa-solid fa-terminal" style="font-size: 0.8rem; margin-left: 4px;"></i> المهندس علي المعموري_
         </div>
 
-        <a href="https://alikhalid.pythonanywhere.com" class="btn-cyber">
-            دخول النظام الآن <i class="fas fa-sign-in-alt"></i>
+        <h1 class="main-title">أكاديمية المطور</h1>
+        <p class="subtitle">بوابة الدخول الآمنة للمنصة والخدمات البرمجية</p>
+
+        <div class="login-btn-wrapper">
+            <a href="https://alikhalid.pythonanywhere.com" class="login-btn" target="_blank">
+                <i class="fa-solid fa-right-to-bracket"></i> دخول النظام الآن
+            </a>
+        </div>
+
+        <div class="divider">قنوات الاتصال</div>
+
+        <a href="https://instagram.com/x.5qe" class="contact-item instagram-card" target="_blank">
+            <div class="contact-info">
+                <span>Instagram</span>
+                <p>x.5qe</p>
+            </div>
+            <i class="fa-brands fa-instagram"></i>
         </a>
 
-        <div class="social-title">قنوات الاتصال</div>
-        
-        <div class="social-grid">
-            <a href="https://instagram.com/x.5qe" target="_blank" class="social-item instagram-link">
-                <i class="fab fa-instagram"></i>
-                <div class="social-text">
-                    <span class="social-label">Instagram</span>
-                    <span class="social-username">x.5qe</span>
-                </div>
-            </a>
+        <a href="https://t.me/c99ol" class="contact-item" target="_blank">
+            <div class="contact-info">
+                <span>Telegram</span>
+                <p>@c99ol</p>
+            </div>
+            <i class="fa-brands fa-telegram"></i>
+        </a>
 
-            <a href="https://t.me/c990l" target="_blank" class="social-item telegram-link">
-                <i class="fab fa-telegram"></i>
-                <div class="social-text">
-                    <span class="social-label">Telegram</span>
-                    <span class="social-username">@c990l</span>
-                </div>
-            </a>
+        <a href="mailto:mmdeedn@gmail.com" class="contact-item" target="_blank">
+            <div class="contact-info">
+                <span>Email</span>
+                <p>mmdeedn@gmail.com</p>
+            </div>
+            <i class="fa-solid fa-envelope"></i>
+        </a>
 
-            <a href="mailto:mmdeedn@gmail.com" class="social-item email-link">
-                <i class="fas fa-envelope"></i>
-                <div class="social-text">
-                    <span class="social-label">Email</span>
-                    <span class="social-username">mmdeedn@gmail.com</span>
-                </div>
-            </a>
-        </div>
     </div>
 
 </body>
