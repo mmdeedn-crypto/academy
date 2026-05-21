@@ -5,7 +5,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>أكاديمية المطور | المهندس علي المعموري</title>
+<title>أكاديمية المطور</title>
 
 <link rel="stylesheet"
 href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -43,7 +43,7 @@ body{
     filter:brightness(0.35) contrast(1.1);
 }
 
-/* طبقة فوق الفيديو */
+/* طبقة */
 .grid-overlay{
     position:fixed;
     top:0;
@@ -54,17 +54,21 @@ body{
     z-index:-1;
 }
 
-/* الحاوية */
+/* الكارت */
 .cyber-card{
     width:100%;
     max-width:420px;
     text-align:center;
-    backdrop-filter:blur(6px);
+
+    backdrop-filter:blur(8px);
     background:rgba(255,255,255,0.03);
+
     border:1px solid rgba(255,255,255,0.08);
     border-radius:20px;
+
     padding:35px 25px;
     box-shadow:0 0 30px rgba(0,242,254,0.08);
+
     margin:40px 0;
 }
 
@@ -72,13 +76,15 @@ body{
 .badge{
     background:rgba(0,242,254,0.1);
     border-right:3px solid #00f2fe;
+
     display:inline-block;
     padding:6px 15px;
+
     color:#00f2fe;
     font-size:0.9rem;
     font-weight:bold;
+
     margin-bottom:20px;
-    letter-spacing:1px;
 }
 
 /* الصورة */
@@ -93,29 +99,12 @@ body{
     height:130px;
     border-radius:50%;
     object-fit:cover;
-    border:3px solid #00f2fe;
 
-    box-shadow:
-    0 0 20px #00f2fe,
-    0 0 40px rgba(0,242,254,0.4);
+    border:4px solid #00f2fe;
 
-    animation:glow 2s infinite alternate;
-}
+    box-shadow:0 0 20px #00f2fe;
 
-@keyframes glow{
-
-    from{
-        box-shadow:
-        0 0 10px #00f2fe,
-        0 0 20px rgba(0,242,254,0.3);
-    }
-
-    to{
-        box-shadow:
-        0 0 25px #00f2fe,
-        0 0 50px rgba(0,242,254,0.7);
-    }
-
+    transition:0.08s ease;
 }
 
 /* العنوان */
@@ -123,9 +112,7 @@ body{
     font-size:2.3rem;
     font-weight:900;
     margin-bottom:12px;
-
-    text-shadow:
-    0 0 15px rgba(0,242,254,0.6);
+    text-shadow:0 0 15px rgba(0,242,254,0.6);
 }
 
 /* الوصف */
@@ -150,8 +137,8 @@ body{
     display:flex;
     align-items:center;
     justify-content:center;
-    gap:10px;
 
+    gap:10px;
     font-size:1.1rem;
     font-weight:bold;
 
@@ -160,12 +147,9 @@ body{
 }
 
 .login-btn:hover{
-
     background:#00f2fe;
     color:#000;
-
     transform:scale(1.03);
-
     box-shadow:0 0 25px #00f2fe;
 }
 
@@ -180,21 +164,16 @@ body{
 
 .divider::before,
 .divider::after{
-
     content:'';
     flex:1;
     height:1px;
-
     background:rgba(255,255,255,0.15);
-
     margin:0 15px;
 }
 
 /* التواصل */
 .contact-item{
-
     background:rgba(255,255,255,0.03);
-
     border:1px solid rgba(255,255,255,0.05);
 
     border-radius:12px;
@@ -213,9 +192,7 @@ body{
 }
 
 .contact-item:hover{
-
     transform:translateY(-3px);
-
     background:rgba(255,255,255,0.08);
 }
 
@@ -224,7 +201,6 @@ body{
 }
 
 .contact-info span{
-
     display:block;
     font-size:0.75rem;
     color:#aaa;
@@ -239,24 +215,14 @@ body{
     font-size:1.4rem;
 }
 
-/* الألوان */
-.fa-instagram{
-    color:#f9bc2c;
-}
-
-.fa-telegram{
-    color:#2ca5e0;
-}
-
-.fa-envelope{
-    color:#ea4335;
-}
+/* ألوان */
+.fa-instagram{ color:#f9bc2c; }
+.fa-telegram{ color:#2ca5e0; }
+.fa-envelope{ color:#ea4335; }
 
 /* زر الصوت */
 #sound-toggle{
-
     position:fixed;
-
     bottom:20px;
     left:20px;
 
@@ -267,24 +233,18 @@ body{
     border-radius:50%;
 
     background:rgba(0,242,254,0.15);
-
     color:#00f2fe;
 
     font-size:1.2rem;
-
     cursor:pointer;
 
     backdrop-filter:blur(10px);
-
     transition:0.3s;
-
     z-index:999;
 }
 
 #sound-toggle:hover{
-
     transform:scale(1.1);
-
     box-shadow:0 0 20px #00f2fe;
 }
 
@@ -293,19 +253,15 @@ body{
 
 <body>
 
-<!-- الفيديو -->
+<!-- فيديو -->
 <video id="bgVideo"
-autoplay
-loop
-muted
-playsinline
+autoplay loop muted playsinline
 class="background-video">
 
 <source src="video.mp4" type="video/mp4">
 
 </video>
 
-<!-- الطبقة -->
 <div class="grid-overlay"></div>
 
 <!-- زر الصوت -->
@@ -317,78 +273,49 @@ class="background-video">
 <div class="cyber-card">
 
 <div class="badge">
-
 <i class="fa-solid fa-terminal"></i>
-
 المهندس علي المعموري_
-
 </div>
 
-<!-- الصورة -->
 <div class="profile-image">
-
 <img src="profile.jpg" alt="Profile">
-
 </div>
 
-<h1 class="main-title">
-أكاديمية المطور
-</h1>
+<h1 class="main-title">أكاديمية المطور</h1>
 
 <p class="subtitle">
 بوابة الدخول الآمنة للمنصة والخدمات البرمجية
 </p>
 
-<a href="https://alikhalid.pythonanywhere.com"
-class="login-btn"
-target="_blank">
-
+<a class="login-btn" href="https://alikhalid.pythonanywhere.com" target="_blank">
 <i class="fa-solid fa-right-to-bracket"></i>
-
 دخول النظام الآن
-
 </a>
 
-<div class="divider">
-قنوات الاتصال
-</div>
+<div class="divider">قنوات الاتصال</div>
 
-<a href="https://instagram.com/x.5qe"
-class="contact-item"
-target="_blank">
-
+<a class="contact-item" href="https://instagram.com/x.5qe">
 <div class="contact-info">
 <span>Instagram</span>
 <p>x.5qe</p>
 </div>
-
 <i class="fa-brands fa-instagram"></i>
-
 </a>
 
-<a href="https://t.me/c99ol"
-class="contact-item"
-target="_blank">
-
+<a class="contact-item" href="https://t.me/c99ol">
 <div class="contact-info">
 <span>Telegram</span>
 <p>@c99ol</p>
 </div>
-
 <i class="fa-brands fa-telegram"></i>
-
 </a>
 
-<a href="mailto:mmdeedn@gmail.com"
-class="contact-item">
-
+<a class="contact-item" href="mailto:mmdeedn@gmail.com">
 <div class="contact-info">
 <span>Email</span>
 <p>mmdeedn@gmail.com</p>
 </div>
-
 <i class="fa-solid fa-envelope"></i>
-
 </a>
 
 </div>
@@ -396,33 +323,60 @@ class="contact-item">
 <script>
 
 const video = document.getElementById("bgVideo");
-
-const soundBtn =
-document.getElementById("sound-toggle");
+const btn = document.getElementById("sound-toggle");
+const img = document.querySelector(".profile-image img");
 
 video.volume = 1;
 
-/* تشغيل وكتم الصوت */
+let running = false;
 
-soundBtn.addEventListener("click", () => {
+btn.addEventListener("click", async () => {
 
-    if(video.muted){
+    video.muted = !video.muted;
 
-        video.muted = false;
+    if(!video.muted){
 
-        soundBtn.innerHTML =
-        '<i class="fa-solid fa-volume-xmark"></i>';
+        await video.play();
+
+        btn.innerHTML = '<i class="fa-solid fa-volume-xmark"></i>';
+
+        startPulse();
 
     } else {
 
-        video.muted = true;
-
-        soundBtn.innerHTML =
-        '<i class="fa-solid fa-volume-high"></i>';
+        btn.innerHTML = '<i class="fa-solid fa-volume-high"></i>';
 
     }
 
 });
+
+function startPulse(){
+
+    if(running) return;
+    running = true;
+
+    function animate(){
+
+        requestAnimationFrame(animate);
+
+        if(video.muted){
+            img.style.transform = "scale(1)";
+            img.style.boxShadow = "0 0 20px #00f2fe";
+            return;
+        }
+
+        let beat = 1 + Math.random() * 0.5;
+
+        img.style.transform = `scale(${beat})`;
+
+        img.style.boxShadow = `
+            0 0 ${20 * beat}px #00f2fe,
+            0 0 ${40 * beat}px rgba(0,242,254,0.6)
+        `;
+    }
+
+    animate();
+}
 
 </script>
 
