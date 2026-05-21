@@ -1,232 +1,342 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>أكاديمية المطور | المهندس علي المعموري</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        body {
-            background-color: #050811;
-            color: #fff;
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            overflow-x: hidden;
-            padding: 20px;
-        }
+<title>أكاديمية المطور | المهندس علي المعموري</title>
 
-        /* كود خلفية الفيديو بكامل الأبعاد وبدون زوم قريب */
-        .background-video {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -2;
-            object-fit: cover;
-            filter: brightness(0.35) contrast(1.1); /* موازنة السطوع لبروز النصوص */
-        }
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-        /* طبقة حماية برمجية خفيفة فوق الفيديو */
-        .grid-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(5, 8, 17, 0.2);
-            z-index: -1;
-        }
+<style>
 
-        /* الحاوية الرئيسية - شفافة بالكامل لكي يظهر الفيديو بوضوح */
-        .cyber-card {
-            background: transparent; 
-            width: 100%;
-            max-width: 400px;
-            padding: 30px 20px;
-            position: relative;
-            text-align: center;
-        }
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;
+}
 
-        /* شارة الاسم العائمة */
-        .badge {
-            background: rgba(0, 242, 254, 0.1);
-            border-right: 3px solid #00f2fe;
-            display: inline-block;
-            padding: 6px 15px;
-            color: #00f2fe;
-            font-size: 0.9rem;
-            font-weight: bold;
-            margin-bottom: 25px;
-            letter-spacing: 1px;
-            box-shadow: 0 0 10px rgba(0, 242, 254, 0.2);
-        }
+body{
+    background:#050811;
+    color:#fff;
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    overflow:hidden;
+    padding:20px;
+}
 
-        /* العناوين مع ظل خلفي ممتاز لبروز النص فوق الفيديو */
-        .main-title {
-            font-size: 2.4rem;
-            font-weight: 900;
-            margin-bottom: 12px;
-            text-shadow: 0 0 15px rgba(0, 242, 254, 0.6), 0 2px 4px rgba(0,0,0,0.8);
-        }
+/* الفيديو */
+.background-video{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    z-index:-2;
+    filter:brightness(0.35) contrast(1.1);
+}
 
-        .subtitle {
-            color: #b0c4de;
-            font-size: 0.95rem;
-            margin-bottom: 40px;
-            line-height: 1.6;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.8);
-        }
+/* طبقة شفافة */
+.grid-overlay{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:rgba(5,8,17,0.25);
+    z-index:-1;
+}
 
-        /* منطقة زر دخول النظام النظيف */
-        .login-btn-wrapper {
-            padding: 15px 0;
-            margin-bottom: 35px;
-        }
+/* الحاوية */
+.cyber-card{
+    width:100%;
+    max-width:420px;
+    text-align:center;
+    backdrop-filter:blur(6px);
+    background:rgba(255,255,255,0.03);
+    border:1px solid rgba(255,255,255,0.08);
+    border-radius:20px;
+    padding:35px 25px;
+    box-shadow:0 0 30px rgba(0,242,254,0.08);
+}
 
-        .login-btn {
-            color: #00f2fe;
-            text-decoration: none;
-            font-size: 1.4rem;
-            font-weight: bold;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            transition: 0.3s ease;
-            text-shadow: 0 0 10px rgba(0, 242, 254, 0.5), 0 2px 4px rgba(0,0,0,0.8);
-        }
+/* الشارة */
+.badge{
+    background:rgba(0,242,254,0.1);
+    border-right:3px solid #00f2fe;
+    display:inline-block;
+    padding:6px 15px;
+    color:#00f2fe;
+    font-size:0.9rem;
+    font-weight:bold;
+    margin-bottom:25px;
+    letter-spacing:1px;
+}
 
-        .login-btn:hover {
-            color: #fff;
-            text-shadow: 0 0 20px #00f2fe, 0 0 30px #00f2fe;
-            transform: scale(1.05);
-        }
+/* العنوان */
+.main-title{
+    font-size:2.3rem;
+    font-weight:900;
+    margin-bottom:12px;
+    text-shadow:0 0 15px rgba(0,242,254,0.6);
+}
 
-        /* فواصل قنوات الاتصال */
-        .divider {
-            display: flex;
-            align-items: center;
-            color: #8a99ad;
-            font-size: 0.85rem;
-            margin-bottom: 25px;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.8);
-        }
-        .divider::before, .divider::after {
-            content: '';
-            flex: 1;
-            height: 1px;
-            background: rgba(255, 255, 255, 0.15);
-            margin: 0 15px;
-        }
+/* الوصف */
+.subtitle{
+    color:#b0c4de;
+    font-size:0.95rem;
+    margin-bottom:35px;
+    line-height:1.7;
+}
 
-        /* أزرار التواصل الشفافة 100% وبدون أي إطارات مخربة */
-        .contact-item {
-            background: transparent;
-            border: none;
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 14px 20px;
-            margin-bottom: 15px;
-            text-decoration: none;
-            color: #fff;
-            transition: 0.3s ease;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.9);
-        }
+/* زر الدخول */
+.login-btn{
+    background:rgba(0,242,254,0.12);
+    border:1px solid rgba(0,242,254,0.3);
+    color:#00f2fe;
+    text-decoration:none;
+    padding:14px 22px;
+    border-radius:14px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+    font-size:1.1rem;
+    font-weight:bold;
+    transition:0.3s;
+    margin-bottom:35px;
+}
 
-        .contact-item:hover {
-            background: rgba(255, 255, 255, 0.08);
-            transform: translateX(-5px);
-        }
+.login-btn:hover{
+    background:#00f2fe;
+    color:#000;
+    transform:scale(1.03);
+    box-shadow:0 0 25px #00f2fe;
+}
 
-        .contact-info {
-            text-align: right;
-        }
+/* الفاصل */
+.divider{
+    display:flex;
+    align-items:center;
+    color:#8a99ad;
+    font-size:0.85rem;
+    margin-bottom:20px;
+}
 
-        .contact-info span {
-            display: block;
-            font-size: 0.75rem;
-            color: #a0a0a0;
-        }
+.divider::before,
+.divider::after{
+    content:'';
+    flex:1;
+    height:1px;
+    background:rgba(255,255,255,0.15);
+    margin:0 15px;
+}
 
-        .contact-info p {
-            font-size: 1rem;
-            font-weight: 500;
-            margin-top: 2px;
-        }
+/* روابط التواصل */
+.contact-item{
+    background:rgba(255,255,255,0.03);
+    border:1px solid rgba(255,255,255,0.05);
+    border-radius:12px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:14px 18px;
+    margin-bottom:14px;
+    text-decoration:none;
+    color:#fff;
+    transition:0.3s;
+}
 
-        .contact-item i {
-            font-size: 1.5rem;
-        }
-        
-        /* ألوان الأيقونات المضيئة */
-        .fa-instagram { color: #f9bc2c; filter: drop-shadow(0 0 8px #f9bc2c) !important; }
-        .fa-telegram { color: #2ca5e0; filter: drop-shadow(0 0 8px #2ca5e0) !important; }
-        .fa-envelope { color: #ea4335; filter: drop-shadow(0 0 8px #ea4335) !important; }
+.contact-item:hover{
+    transform:translateY(-3px);
+    background:rgba(255,255,255,0.08);
+}
 
-    </style>
+.contact-info{
+    text-align:right;
+}
+
+.contact-info span{
+    display:block;
+    font-size:0.75rem;
+    color:#aaa;
+}
+
+.contact-info p{
+    margin-top:3px;
+    font-weight:bold;
+}
+
+.contact-item i{
+    font-size:1.4rem;
+}
+
+/* ألوان */
+.fa-instagram{
+    color:#f9bc2c;
+}
+
+.fa-telegram{
+    color:#2ca5e0;
+}
+
+.fa-envelope{
+    color:#ea4335;
+}
+
+/* زر الصوت */
+#sound-toggle{
+    position:fixed;
+    bottom:20px;
+    left:20px;
+    width:55px;
+    height:55px;
+    border:none;
+    border-radius:50%;
+    background:rgba(0,242,254,0.15);
+    color:#00f2fe;
+    font-size:1.2rem;
+    cursor:pointer;
+    backdrop-filter:blur(10px);
+    transition:0.3s;
+    z-index:999;
+}
+
+#sound-toggle:hover{
+    transform:scale(1.1);
+    box-shadow:0 0 20px #00f2fe;
+}
+
+</style>
 </head>
+
 <body>
 
-    <video autoplay loop muted playsinline class="background-video">
-        <source src="HnVideoEditor_2025_11_02_015518990.mp4" type="video/mp4">
-    </video>
+<!-- الفيديو -->
+<video id="bgVideo"
+autoplay
+loop
+muted
+playsinline
+class="background-video">
 
-    <div class="grid-overlay"></div>
+<source src="video.mp4" type="video/mp4">
 
-    <div class="cyber-card">
-        
-        <div class="badge"> 
-            <i class="fa-solid fa-terminal" style="font-size: 0.8rem; margin-left: 4px;"></i> المهندس علي المعموري_
-        </div>
+</video>
 
-        <h1 class="main-title">أكاديمية المطور</h1>
-        <p class="subtitle">بوابة الدخول الآمنة للمنصة والخدمات البرمجية</p>
+<!-- طبقة -->
+<div class="grid-overlay"></div>
 
-        <div class="login-btn-wrapper">
-            <a href="https://alikhalid.pythonanywhere.com" class="login-btn" target="_blank">
-                <i class="fa-solid fa-right-to-bracket"></i> دخول النظام الآن
-            </a>
-        </div>
+<!-- زر الصوت -->
+<button id="sound-toggle">
+<i class="fa-solid fa-volume-high"></i>
+</button>
 
-        <div class="divider">قنوات الاتصال</div>
+<!-- المحتوى -->
+<div class="cyber-card">
 
-        <a href="https://instagram.com/x.5qe" class="contact-item" target="_blank">
-            <div class="contact-info">
-                <span>Instagram</span>
-                <p>x.5qe</p>
-            </div>
-            <i class="fa-brands fa-instagram"></i>
-        </a>
+<div class="badge">
+<i class="fa-solid fa-terminal"></i>
+المهندس علي المعموري_
+</div>
 
-        <a href="https://t.me/c99ol" class="contact-item" target="_blank">
-            <div class="contact-info">
-                <span>Telegram</span>
-                <p>@c99ol</p>
-            </div>
-            <i class="fa-brands fa-telegram"></i>
-        </a>
+<h1 class="main-title">
+أكاديمية المطور
+</h1>
 
-        <a href="mailto:mmdeedn@gmail.com" class="contact-item" target="_blank">
-            <div class="contact-info">
-                <span>Email</span>
-                <p>mmdeedn@gmail.com</p>
-            </div>
-            <i class="fa-solid fa-envelope"></i>
-        </a>
+<p class="subtitle">
+بوابة الدخول الآمنة للمنصة والخدمات البرمجية
+</p>
 
-    </div>
+<a href="https://alikhalid.pythonanywhere.com"
+class="login-btn"
+target="_blank">
+
+<i class="fa-solid fa-right-to-bracket"></i>
+دخول النظام الآن
+
+</a>
+
+<div class="divider">
+قنوات الاتصال
+</div>
+
+<a href="https://instagram.com/x.5qe"
+class="contact-item"
+target="_blank">
+
+<div class="contact-info">
+<span>Instagram</span>
+<p>x.5qe</p>
+</div>
+
+<i class="fa-brands fa-instagram"></i>
+
+</a>
+
+<a href="https://t.me/c99ol"
+class="contact-item"
+target="_blank">
+
+<div class="contact-info">
+<span>Telegram</span>
+<p>@c99ol</p>
+</div>
+
+<i class="fa-brands fa-telegram"></i>
+
+</a>
+
+<a href="mailto:mmdeedn@gmail.com"
+class="contact-item">
+
+<div class="contact-info">
+<span>Email</span>
+<p>mmdeedn@gmail.com</p>
+</div>
+
+<i class="fa-solid fa-envelope"></i>
+
+</a>
+
+</div>
+
+<script>
+
+const video = document.getElementById("bgVideo");
+const soundBtn = document.getElementById("sound-toggle");
+
+video.volume = 1;
+
+/* تشغيل/كتم الصوت */
+
+soundBtn.addEventListener("click", () => {
+
+    if(video.muted){
+
+        video.muted = false;
+
+        soundBtn.innerHTML =
+        '<i class="fa-solid fa-volume-xmark"></i>';
+
+    } else {
+
+        video.muted = true;
+
+        soundBtn.innerHTML =
+        '<i class="fa-solid fa-volume-high"></i>';
+
+    }
+
+});
+
+</script>
 
 </body>
 </html>
