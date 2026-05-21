@@ -24,7 +24,7 @@
             padding: 20px;
         }
 
-        /* فيديو الخلفية مالتك بكامل أبعاده وبدون زوم */
+        /* كود خلفية الفيديو بكامل الأبعاد وبدون زوم قريب */
         .background-video {
             position: fixed;
             top: 0;
@@ -33,10 +33,10 @@
             height: 100%;
             z-index: -2;
             object-fit: cover;
-            filter: brightness(0.35) contrast(1.1); /* موازنة السطوع ليتناسب مع الخطوط المضيئة */
+            filter: brightness(0.35) contrast(1.1); /* موازنة السطوع لبروز النصوص */
         }
 
-        /* طبقة حماية برمجية خفيفة جداً فوق الفيديو */
+        /* طبقة حماية برمجية خفيفة فوق الفيديو */
         .grid-overlay {
             position: fixed;
             top: 0;
@@ -47,7 +47,7 @@
             z-index: -1;
         }
 
-        /* الحاوية الرئيسية - شفافة بالكامل وبدون أي إطار مخرب للفيديو */
+        /* الحاوية الرئيسية - شفافة بالكامل لكي يظهر الفيديو بوضوح */
         .cyber-card {
             background: transparent; 
             width: 100%;
@@ -57,7 +57,7 @@
             text-align: center;
         }
 
-        /* شارة الاسم العائمة مع توهج سيبراني */
+        /* شارة الاسم العائمة */
         .badge {
             background: rgba(0, 242, 254, 0.1);
             border-right: 3px solid #00f2fe;
@@ -71,7 +71,7 @@
             box-shadow: 0 0 10px rgba(0, 242, 254, 0.2);
         }
 
-        /* العناوين مع ظل خلفي لبروز النص فوق الفيديو */
+        /* العناوين مع ظل خلفي ممتاز لبروز النص فوق الفيديو */
         .main-title {
             font-size: 2.4rem;
             font-weight: 900;
@@ -87,7 +87,7 @@
             text-shadow: 0 2px 4px rgba(0,0,0,0.8);
         }
 
-        /* منطقة زر دخول النظام - بدون الخطوط والإطارات العرضية */
+        /* منطقة زر دخول النظام النظيف */
         .login-btn-wrapper {
             padding: 15px 0;
             margin-bottom: 35px;
@@ -129,7 +129,7 @@
             margin: 0 15px;
         }
 
-        /* أزرار التواصل - شفافة 100% وبدون أي إطارات مخربة للرؤية */
+        /* أزرار التواصل الشفافة 100% وبدون أي إطارات مخربة */
         .contact-item {
             background: transparent;
             border: none;
@@ -145,7 +145,6 @@
             text-shadow: 0 2px 4px rgba(0,0,0,0.9);
         }
 
-        /* تأثير خفيف عند تمرير الماوس أو الضغط لتوضيح التفاعل */
         .contact-item:hover {
             background: rgba(255, 255, 255, 0.08);
             transform: translateX(-5px);
@@ -169,7 +168,6 @@
 
         .contact-item i {
             font-size: 1.5rem;
-            filter: drop-shadow(0 0 5px rgba(255,255,255,0.3));
         }
         
         /* ألوان الأيقونات المضيئة */
@@ -181,7 +179,7 @@
 </head>
 <body>
 
-    <video autoplay loop playsinline class="background-video">
+    <video autoplay loop muted playsinline class="background-video">
         <source src="HnVideoEditor_2025_11_02_015518990.mp4" type="video/mp4">
     </video>
 
