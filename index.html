@@ -24,72 +24,40 @@
             padding: 20px;
         }
 
-        /* كود خلفية الفيديو الثابتة */
+        /* فيديو الخلفية مالتك بكامل أبعاده وبدون زوم */
         .background-video {
             position: fixed;
-            top: 50%;
-            left: 50%;
-            min-width: 100%;
-            min-height: 100%;
-            width: auto;
-            height: auto;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             z-index: -2;
-            transform: translate(-50%, -50%);
             object-fit: cover;
-            filter: brightness(0.25) contrast(1.1); /* تقليل السطوع لبروز التصميم */
+            filter: brightness(0.35) contrast(1.1); /* موازنة السطوع ليتناسب مع الخطوط المضيئة */
         }
 
-        /* تأثير الشبكة البرمجية فوق الفيديو (اختياري ويعطي طابع سيبراني) */
+        /* طبقة حماية برمجية خفيفة جداً فوق الفيديو */
         .grid-overlay {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background-image: linear-gradient(rgba(18, 24, 38, 0.2) 1px, transparent 1px),
-                              linear-gradient(90deg, rgba(18, 24, 38, 0.2) 1px, transparent 1px);
-            background-size: 20px 20px;
+            background: rgba(5, 8, 17, 0.2);
             z-index: -1;
         }
 
-        /* الحاوية الرئيسية (نفس اللي بالصورة بالضبط) */
+        /* الحاوية الرئيسية - شفافة بالكامل وبدون أي إطار مخرب للفيديو */
         .cyber-card {
-            background: rgba(10, 15, 26, 0.75); /* خلفية شبه شفافة لكي يظهر الفيديو من خلفها */
-            backdrop-filter: blur(8px); /* تأثير تغبيش خلف الكرت */
+            background: transparent; 
             width: 100%;
             max-width: 400px;
-            border: 1px solid rgba(0, 242, 254, 0.2);
             padding: 30px 20px;
             position: relative;
             text-align: center;
-            border-radius: 4px;
-            box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
         }
 
-        /* الخطوط المضيئة فوق وتحت الكرت */
-        .cyber-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 15%;
-            width: 50%;
-            height: 2px;
-            background: #00f2fe;
-            box-shadow: 0 0 10px #00f2fe;
-        }
-
-        .cyber-card::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 35%;
-            width: 40%;
-            height: 2px;
-            background: #b92b27;
-            box-shadow: 0 0 10px #b92b27;
-        }
-
-        /* شارة المهندس علي المعموري */
+        /* شارة الاسم العائمة مع توهج سيبراني */
         .badge {
             background: rgba(0, 242, 254, 0.1);
             border-right: 3px solid #00f2fe;
@@ -100,27 +68,27 @@
             font-weight: bold;
             margin-bottom: 25px;
             letter-spacing: 1px;
+            box-shadow: 0 0 10px rgba(0, 242, 254, 0.2);
         }
 
-        /* العناوين */
+        /* العناوين مع ظل خلفي لبروز النص فوق الفيديو */
         .main-title {
-            font-size: 2.2rem;
+            font-size: 2.4rem;
             font-weight: 900;
             margin-bottom: 12px;
-            text-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+            text-shadow: 0 0 15px rgba(0, 242, 254, 0.6), 0 2px 4px rgba(0,0,0,0.8);
         }
 
         .subtitle {
-            color: #8a99ad;
+            color: #b0c4de;
             font-size: 0.95rem;
             margin-bottom: 40px;
             line-height: 1.6;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.8);
         }
 
-        /* زر دخول النظام */
+        /* منطقة زر دخول النظام - بدون الخطوط والإطارات العرضية */
         .login-btn-wrapper {
-            border-top: 1px solid rgba(0, 242, 254, 0.2);
-            border-bottom: 1px solid rgba(0, 242, 254, 0.2);
             padding: 15px 0;
             margin-bottom: 35px;
         }
@@ -128,59 +96,59 @@
         .login-btn {
             color: #00f2fe;
             text-decoration: none;
-            font-size: 1.3rem;
+            font-size: 1.4rem;
             font-weight: bold;
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 10px;
             transition: 0.3s ease;
+            text-shadow: 0 0 10px rgba(0, 242, 254, 0.5), 0 2px 4px rgba(0,0,0,0.8);
         }
 
         .login-btn:hover {
-            text-shadow: 0 0 15px #00f2fe;
-            transform: scale(1.03);
+            color: #fff;
+            text-shadow: 0 0 20px #00f2fe, 0 0 30px #00f2fe;
+            transform: scale(1.05);
         }
 
-        /* عنوان قنوات الاتصال */
+        /* فواصل قنوات الاتصال */
         .divider {
             display: flex;
             align-items: center;
-            color: #56667a;
+            color: #8a99ad;
             font-size: 0.85rem;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.8);
         }
         .divider::before, .divider::after {
             content: '';
             flex: 1;
             height: 1px;
-            background: rgba(86, 102, 122, 0.3);
-            margin: 0 10px;
+            background: rgba(255, 255, 255, 0.15);
+            margin: 0 15px;
         }
 
-        /* كروت وسائل التواصل */
+        /* أزرار التواصل - شفافة 100% وبدون أي إطارات مخربة للرؤية */
         .contact-item {
-            background: rgba(20, 27, 43, 0.6);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            border-radius: 4px;
+            background: transparent;
+            border: none;
+            border-radius: 8px;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 12px 15px;
-            margin-bottom: 12px;
+            padding: 14px 20px;
+            margin-bottom: 15px;
             text-decoration: none;
             color: #fff;
-            transition: 0.3s;
+            transition: 0.3s ease;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.9);
         }
 
+        /* تأثير خفيف عند تمرير الماوس أو الضغط لتوضيح التفاعل */
         .contact-item:hover {
             background: rgba(255, 255, 255, 0.08);
-            border-color: rgba(255, 255, 255, 0.15);
-        }
-
-        /* الخط الذهبي الخاص بإنستغرام مثل الصورة */
-        .instagram-card {
-            border-left: 3px solid #f9bc2c; 
+            transform: translateX(-5px);
         }
 
         .contact-info {
@@ -190,29 +158,31 @@
         .contact-info span {
             display: block;
             font-size: 0.75rem;
-            color: #65758c;
+            color: #a0a0a0;
         }
 
         .contact-info p {
-            font-size: 0.95rem;
+            font-size: 1rem;
             font-weight: 500;
             margin-top: 2px;
         }
 
         .contact-item i {
-            font-size: 1.4rem;
+            font-size: 1.5rem;
+            filter: drop-shadow(0 0 5px rgba(255,255,255,0.3));
         }
         
-        .fa-instagram { color: #f9bc2c; }
-        .fa-telegram { color: #2ca5e0; }
-        .fa-envelope { color: #ea4335; }
+        /* ألوان الأيقونات المضيئة */
+        .fa-instagram { color: #f9bc2c; filter: drop-shadow(0 0 8px #f9bc2c) !important; }
+        .fa-telegram { color: #2ca5e0; filter: drop-shadow(0 0 8px #2ca5e0) !important; }
+        .fa-envelope { color: #ea4335; filter: drop-shadow(0 0 8px #ea4335) !important; }
 
     </style>
 </head>
 <body>
 
-    <video autoplay loop muted playsinline class="background-video">
-        <source src="video.mp4" type="video/mp4">
+    <video autoplay loop playsinline class="background-video">
+        <source src="HnVideoEditor_2025_11_02_015518990.mp4" type="video/mp4">
     </video>
 
     <div class="grid-overlay"></div>
@@ -234,7 +204,7 @@
 
         <div class="divider">قنوات الاتصال</div>
 
-        <a href="https://instagram.com/x.5qe" class="contact-item instagram-card" target="_blank">
+        <a href="https://instagram.com/x.5qe" class="contact-item" target="_blank">
             <div class="contact-info">
                 <span>Instagram</span>
                 <p>x.5qe</p>
