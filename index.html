@@ -12,6 +12,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
 
 <style>
 
+/* الأساس */
 *{
     margin:0;
     padding:0;
@@ -63,13 +64,10 @@ body{
     backdrop-filter:blur(8px);
     background:rgba(255,255,255,0.03);
 
-    border:1px solid rgba(255,255,255,0.08);
+    border:1px solid rgba(0,242,254,0.15);
     border-radius:20px;
 
-    padding:35px 25px;
-    box-shadow:0 0 30px rgba(0,242,254,0.08);
-
-    margin:40px 0;
+    padding:30px 20px;
 }
 
 /* الشارة */
@@ -84,18 +82,57 @@ body{
     font-size:0.9rem;
     font-weight:bold;
 
-    margin-bottom:20px;
+    margin-bottom:15px;
 }
 
 /* ===================== */
-/* الصورة + الإطار */
+/* الروبوت الجديد 🤖 */
+/* ===================== */
+
+.guide-character{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+
+    margin-bottom:15px;
+}
+
+.guide-character img{
+    width:70px;
+    height:70px;
+
+    animation:float 2s infinite ease-in-out;
+}
+
+@keyframes float{
+    0%,100%{ transform:translateY(0); }
+    50%{ transform:translateY(-8px); }
+}
+
+.speech-bubble{
+    background:rgba(0,242,254,0.12);
+    border:1px solid rgba(0,242,254,0.4);
+
+    padding:10px 12px;
+    border-radius:12px;
+
+    font-size:0.8rem;
+
+    max-width:220px;
+
+    backdrop-filter:blur(10px);
+}
+
+/* ===================== */
+/* الصورة + الإطار القديم */
 /* ===================== */
 
 .profile-wrapper{
     position:relative;
-    width:150px;
-    height:150px;
-    margin:0 auto 20px auto;
+    width:140px;
+    height:140px;
+    margin:0 auto 15px auto;
 }
 
 .profile-wrapper img{
@@ -104,38 +141,30 @@ body{
     border-radius:50%;
     object-fit:cover;
 
-    position:relative;
-    z-index:2;
-
     border:3px solid #00f2fe;
 }
 
-/* دائرة تدور */
 .ring{
     position:absolute;
     top:-10px;
     left:-10px;
-
-    width:170px;
-    height:170px;
+    width:160px;
+    height:160px;
 
     border-radius:50%;
 
-    border:2px solid transparent;
     border-top:2px solid #00f2fe;
     border-bottom:2px solid rgba(0,242,254,0.3);
 
     animation:spin 2s linear infinite;
 }
 
-/* دائرة ثانية */
 .ring2{
     position:absolute;
     top:-18px;
     left:-18px;
-
-    width:186px;
-    height:186px;
+    width:176px;
+    height:176px;
 
     border-radius:50%;
 
@@ -154,118 +183,37 @@ body{
     to{ transform:rotate(0deg); }
 }
 
-/* العنوان */
+/* النصوص */
 .main-title{
-    font-size:2.3rem;
-    font-weight:900;
-    margin-bottom:12px;
-    text-shadow:0 0 15px rgba(0,242,254,0.6);
+    font-size:2.2rem;
+    margin-bottom:10px;
 }
 
-/* الوصف */
 .subtitle{
+    font-size:0.9rem;
     color:#b0c4de;
-    font-size:0.95rem;
-    margin-bottom:35px;
-    line-height:1.7;
+    margin-bottom:20px;
 }
 
-/* زر الدخول */
+/* زر */
 .login-btn{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    gap:10px;
+
+    padding:12px;
+    border-radius:12px;
+
     background:rgba(0,242,254,0.12);
     border:1px solid rgba(0,242,254,0.3);
 
     color:#00f2fe;
     text-decoration:none;
 
-    padding:14px 22px;
-    border-radius:14px;
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
-    gap:10px;
-    font-size:1.1rem;
-    font-weight:bold;
-
-    transition:0.3s;
-    margin-bottom:35px;
+    margin-bottom:15px;
 }
-
-.login-btn:hover{
-    background:#00f2fe;
-    color:#000;
-    transform:scale(1.03);
-    box-shadow:0 0 25px #00f2fe;
-}
-
-/* الفاصل */
-.divider{
-    display:flex;
-    align-items:center;
-    color:#8a99ad;
-    font-size:0.85rem;
-    margin-bottom:20px;
-}
-
-.divider::before,
-.divider::after{
-    content:'';
-    flex:1;
-    height:1px;
-    background:rgba(255,255,255,0.15);
-    margin:0 15px;
-}
-
-/* التواصل */
-.contact-item{
-    background:rgba(255,255,255,0.03);
-    border:1px solid rgba(255,255,255,0.05);
-
-    border-radius:12px;
-
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-
-    padding:14px 18px;
-    margin-bottom:14px;
-
-    text-decoration:none;
-    color:#fff;
-
-    transition:0.3s;
-}
-
-.contact-item:hover{
-    transform:translateY(-3px);
-    background:rgba(255,255,255,0.08);
-}
-
-.contact-info{
-    text-align:right;
-}
-
-.contact-info span{
-    display:block;
-    font-size:0.75rem;
-    color:#aaa;
-}
-
-.contact-info p{
-    margin-top:3px;
-    font-weight:bold;
-}
-
-.contact-item i{
-    font-size:1.4rem;
-}
-
-/* ألوان */
-.fa-instagram{ color:#f9bc2c; }
-.fa-telegram{ color:#2ca5e0; }
-.fa-envelope{ color:#ea4335; }
 
 /* زر الصوت */
 #sound-toggle{
@@ -282,17 +230,8 @@ body{
     background:rgba(0,242,254,0.15);
     color:#00f2fe;
 
-    font-size:1.2rem;
     cursor:pointer;
-
-    backdrop-filter:blur(10px);
-    transition:0.3s;
     z-index:999;
-}
-
-#sound-toggle:hover{
-    transform:scale(1.1);
-    box-shadow:0 0 20px #00f2fe;
 }
 
 </style>
@@ -314,53 +253,29 @@ body{
 
 <div class="cyber-card">
 
-<div class="badge">
-<i class="fa-solid fa-terminal"></i>
-المهندس علي المعموري_
+<!-- الروبوت -->
+<div class="guide-character">
+<img src="robot.png" alt="bot">
+<div class="speech-bubble" id="speech">
+مرحباً 👋 أنا أشرح عن الموقع
+</div>
 </div>
 
-<!-- الصورة + الإطار -->
+<div class="badge">المهندس علي المعموري_</div>
+
+<!-- الصورة -->
 <div class="profile-wrapper">
-<img src="profile.jpg" alt="Profile">
+<img src="profile.jpg">
 <div class="ring"></div>
 <div class="ring2"></div>
 </div>
 
 <h1 class="main-title">أكاديمية المطور</h1>
 
-<p class="subtitle">
-بوابة الدخول الآمنة للمنصة والخدمات البرمجية
-</p>
+<p class="subtitle">منصة تعليم الأمن السيبراني</p>
 
-<a class="login-btn" href="https://alikhalid.pythonanywhere.com" target="_blank">
-<i class="fa-solid fa-right-to-bracket"></i>
-دخول النظام الآن
-</a>
-
-<div class="divider">قنوات الاتصال</div>
-
-<a class="contact-item" href="https://instagram.com/x.5qe">
-<div class="contact-info">
-<span>Instagram</span>
-<p>x.5qe</p>
-</div>
-<i class="fa-brands fa-instagram"></i>
-</a>
-
-<a class="contact-item" href="https://t.me/c99ol">
-<div class="contact-info">
-<span>Telegram</span>
-<p>@c99ol</p>
-</div>
-<i class="fa-brands fa-telegram"></i>
-</a>
-
-<a class="contact-item" href="mailto:mmdeedn@gmail.com">
-<div class="contact-info">
-<span>Email</span>
-<p>mmdeedn@gmail.com</p>
-</div>
-<i class="fa-solid fa-envelope"></i>
+<a class="login-btn" href="#">
+دخول النظام
 </a>
 
 </div>
@@ -369,10 +284,12 @@ body{
 
 const video = document.getElementById("bgVideo");
 const btn = document.getElementById("sound-toggle");
+const speech = document.getElementById("speech");
 const wrapper = document.querySelector(".profile-wrapper");
 
 video.volume = 1;
 
+/* الصوت */
 btn.addEventListener("click", async () => {
 
     video.muted = !video.muted;
@@ -387,6 +304,7 @@ btn.addEventListener("click", async () => {
 
 });
 
+/* نبض الصورة */
 let running = false;
 
 function startPulse(){
@@ -395,7 +313,6 @@ function startPulse(){
     running = true;
 
     function animate(){
-
         requestAnimationFrame(animate);
 
         if(video.muted){
@@ -404,7 +321,7 @@ function startPulse(){
             return;
         }
 
-        let beat = 1 + Math.random() * 0.06;
+        let beat = 1 + Math.random() * 0.05;
 
         wrapper.style.transform = `scale(${beat})`;
 
@@ -416,6 +333,23 @@ function startPulse(){
 
     animate();
 }
+
+/* كلام الروبوت */
+const messages = [
+    "مرحباً 👋 أنا مساعد الموقع",
+    "هذا موقع المهندس علي المعموري",
+    "مختص بالأمن السيبراني 🔐",
+    "يتعلم تطوير الويب 💻",
+    "منصة تعليمية تفاعلية 🚀"
+];
+
+let i = 0;
+
+setInterval(() => {
+    i++;
+    if(i >= messages.length) i = 0;
+    speech.textContent = messages[i];
+}, 3000);
 
 </script>
 
