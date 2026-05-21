@@ -12,11 +12,12 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
 
 <style>
 
+/* الأساس */
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
-    font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;
+    font-family:'Segoe UI',Tahoma;
 }
 
 body{
@@ -27,7 +28,6 @@ body{
     justify-content:center;
     align-items:center;
     overflow-x:hidden;
-    overflow-y:auto;
     padding:20px;
 }
 
@@ -40,7 +40,7 @@ body{
     height:100%;
     object-fit:cover;
     z-index:-2;
-    filter:brightness(0.35) contrast(1.1);
+    filter:brightness(0.35);
 }
 
 /* طبقة */
@@ -57,59 +57,40 @@ body{
 /* الكارت */
 .cyber-card{
     width:100%;
-    max-width:430px;
+    max-width:420px;
     text-align:center;
 
     backdrop-filter:blur(8px);
     background:rgba(255,255,255,0.03);
 
-    border:1px solid rgba(0,242,254,0.12);
     border-radius:20px;
-
     padding:30px 20px;
-}
 
-/* الشارة */
-.badge{
-    background:rgba(0,242,254,0.1);
-    border-right:3px solid #00f2fe;
+    border:1px solid rgba(0,242,254,0.15);
 
-    display:inline-block;
-    padding:6px 15px;
-
-    color:#00f2fe;
-    font-size:0.9rem;
-    font-weight:bold;
-
-    margin-bottom:15px;
+    position:relative;
+    z-index:2;
 }
 
 /* الروبوت */
 .robot-emoji{
     font-size:3rem;
-    animation:float 2s infinite ease-in-out;
-    filter: drop-shadow(0 0 10px #00f2fe);
+    animation:float 2s infinite;
 }
 
 @keyframes float{
-    0%,100%{ transform:translateY(0); }
-    50%{ transform:translateY(-8px); }
+    0%,100%{transform:translateY(0);}
+    50%{transform:translateY(-8px);}
 }
 
-/* فقاعة الكلام */
 .speech-bubble{
     background:rgba(0,242,254,0.12);
     border:1px solid rgba(0,242,254,0.4);
-
-    padding:10px 12px;
+    padding:10px;
     border-radius:12px;
-
-    font-size:0.8rem;
-    max-width:230px;
-
-    margin:10px auto 15px auto;
-
-    backdrop-filter:blur(10px);
+    margin:10px auto;
+    max-width:240px;
+    font-size:0.85rem;
 }
 
 /* الصورة */
@@ -117,71 +98,36 @@ body{
     position:relative;
     width:140px;
     height:140px;
-    margin:0 auto 15px auto;
+    margin:10px auto;
 }
 
 .profile-wrapper img{
     width:100%;
     height:100%;
     border-radius:50%;
-    object-fit:cover;
-
     border:3px solid #00f2fe;
 }
 
 .ring{
     position:absolute;
-    top:-10px;
-    left:-10px;
-    width:160px;
-    height:160px;
+    inset:-10px;
     border-radius:50%;
     border-top:2px solid #00f2fe;
-    border-bottom:2px solid rgba(0,242,254,0.3);
     animation:spin 2s linear infinite;
 }
 
-.ring2{
-    position:absolute;
-    top:-18px;
-    left:-18px;
-    width:176px;
-    height:176px;
-    border-radius:50%;
-    border:2px dashed rgba(0,242,254,0.25);
-    animation:spinReverse 4s linear infinite;
-}
-
 @keyframes spin{
-    from{ transform:rotate(0deg); }
-    to{ transform:rotate(360deg); }
+    to{transform:rotate(360deg);}
 }
 
-@keyframes spinReverse{
-    from{ transform:rotate(360deg); }
-    to{ transform:rotate(0deg); }
-}
-
-/* النص */
-.main-title{
-    font-size:2.2rem;
-    margin-bottom:10px;
-}
-
-.subtitle{
-    font-size:0.9rem;
-    color:#b0c4de;
-    margin-bottom:20px;
-}
-
-/* زر */
+/* زر الدخول */
 .login-btn{
     display:flex;
     justify-content:center;
     align-items:center;
     gap:10px;
 
-    padding:12px;
+    padding:12px 14px;
     border-radius:12px;
 
     background:rgba(0,242,254,0.12);
@@ -189,13 +135,23 @@ body{
 
     color:#00f2fe;
     text-decoration:none;
+    font-weight:bold;
 
-    margin-bottom:20px;
+    margin:15px auto;
+
+    transition:0.3s;
 }
 
-/* ========================= */
-/* خط التواصل تحت فقط 🔥 */
-/* ========================= */
+.login-btn:hover{
+    background:#00f2fe;
+    color:#000;
+    transform:scale(1.05);
+    box-shadow:0 0 20px #00f2fe;
+}
+
+/* ===================== */
+/* التواصل تحت خط واحد */
+/* ===================== */
 
 .social-line{
     position:fixed;
@@ -206,23 +162,22 @@ body{
     display:flex;
     justify-content:center;
     align-items:center;
-    gap:25px;
+    gap:35px;
 
-    padding:12px 0;
+    padding:12px;
 
-    background:rgba(5,8,17,0.6);
+    background:rgba(5,8,17,0.7);
     backdrop-filter:blur(10px);
 
     border-top:1px solid rgba(0,242,254,0.2);
+
+    z-index:9999;
 }
 
 .social-line a{
     color:#fff;
-    font-size:1.3rem;
-
+    font-size:1.4rem;
     position:relative;
-    text-decoration:none;
-
     transition:0.3s;
 }
 
@@ -231,12 +186,9 @@ body{
     position:absolute;
     bottom:-6px;
     left:0;
-
     width:0%;
     height:2px;
-
     background:#00f2fe;
-
     transition:0.3s;
 }
 
@@ -252,7 +204,7 @@ body{
 /* زر الصوت */
 #sound-toggle{
     position:fixed;
-    bottom:60px;
+    bottom:70px;
     left:20px;
 
     width:55px;
@@ -265,7 +217,7 @@ body{
     color:#00f2fe;
 
     cursor:pointer;
-    z-index:999;
+    z-index:10000;
 }
 
 </style>
@@ -275,7 +227,7 @@ body{
 
 <!-- الفيديو -->
 <video id="bgVideo" autoplay loop muted playsinline class="background-video">
-<source src="video.mp4" type="video/mp4">
+<source src="video.mp4">
 </video>
 
 <div class="grid-overlay"></div>
@@ -287,29 +239,27 @@ body{
 
 <div class="cyber-card">
 
-<div class="badge">المهندس علي المعموري_</div>
-
 <div class="robot-emoji">🤖</div>
 
-<div class="speech-bubble" id="speech">
-مرحباً 👋 أنا أشرح عن الموقع
-</div>
+<div class="speech-bubble" id="speech">مرحباً 👋 أنا أشرح عن الموقع</div>
 
 <div class="profile-wrapper">
 <img src="profile.jpg">
 <div class="ring"></div>
-<div class="ring2"></div>
 </div>
 
-<h1 class="main-title">أكاديمية المطور</h1>
+<h2>أكاديمية المطور</h2>
 
-<p class="subtitle">منصة تعليم الأمن السيبراني</p>
+<p>منصة تعليم الأمن السيبراني</p>
 
-<a class="login-btn" href="#">دخول النظام</a>
+<a class="login-btn" href="https://alikhalid.pythonanywhere.com" target="_blank">
+<i class="fa-solid fa-right-to-bracket"></i>
+دخول النظام
+</a>
 
 </div>
 
-<!-- خط التواصل تحت -->
+<!-- التواصل -->
 <div class="social-line">
 
 <a href="https://instagram.com/x.5qe">
@@ -330,10 +280,6 @@ body{
 
 const video = document.getElementById("bgVideo");
 const btn = document.getElementById("sound-toggle");
-const speech = document.getElementById("speech");
-const wrapper = document.querySelector(".profile-wrapper");
-
-video.volume = 1;
 
 btn.addEventListener("click", async () => {
 
@@ -342,38 +288,15 @@ btn.addEventListener("click", async () => {
     if(!video.muted){
         await video.play();
         btn.innerHTML = '<i class="fa-solid fa-volume-xmark"></i>';
-        startPulse();
     } else {
         btn.innerHTML = '<i class="fa-solid fa-volume-high"></i>';
     }
 
 });
 
-let running = false;
-
-function startPulse(){
-
-    if(running) return;
-    running = true;
-
-    function animate(){
-
-        requestAnimationFrame(animate);
-
-        if(video.muted){
-            wrapper.style.transform = "scale(1)";
-            return;
-        }
-
-        let beat = 1 + Math.random() * 0.05;
-
-        wrapper.style.transform = `scale(${beat})`;
-    }
-
-    animate();
-}
-
 /* كلام الروبوت */
+const speech = document.getElementById("speech");
+
 const messages = [
     "مرحباً 👋 أنا مساعد الموقع",
     "هذا موقع المهندس علي المعموري",
