@@ -12,7 +12,10 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
 
 <style>
 
+/* ========================= */
 /* الأساس */
+/* ========================= */
+
 *{
     margin:0;
     padding:0;
@@ -31,7 +34,10 @@ body{
     padding:20px;
 }
 
+/* ========================= */
 /* الفيديو */
+/* ========================= */
+
 .background-video{
     position:fixed;
     top:0;
@@ -53,10 +59,14 @@ body{
     z-index:-1;
 }
 
+/* ========================= */
 /* الكارت */
+/* ========================= */
+
 .cyber-card{
     width:100%;
-    max-width:420px;
+    max-width:430px;
+
     text-align:center;
 
     backdrop-filter:blur(10px);
@@ -68,10 +78,13 @@ body{
     border:1px solid rgba(0,242,254,0.15);
 }
 
+/* ========================= */
 /* الروبوت */
+/* ========================= */
+
 .robot-emoji{
     font-size:3rem;
-    animation:float 2s ease-in-out infinite;
+    animation:float 2s infinite ease-in-out;
 }
 
 @keyframes float{
@@ -82,13 +95,20 @@ body{
 .speech-bubble{
     background:rgba(0,242,254,0.12);
     border:1px solid rgba(0,242,254,0.4);
+
     padding:10px;
     border-radius:12px;
+
     margin:10px auto;
+
     max-width:250px;
+    font-size:0.85rem;
 }
 
+/* ========================= */
 /* الصورة */
+/* ========================= */
+
 .profile-wrapper{
     position:relative;
     width:140px;
@@ -100,11 +120,13 @@ body{
     width:100%;
     height:100%;
     border-radius:50%;
+    object-fit:cover;
+
     border:3px solid #00f2fe;
 }
 
 /* ========================= */
-/* 🔥 الإطار المطور (Neon Pro) */
+/* الإطار التفاعلي */
 /* ========================= */
 
 .ring{
@@ -122,6 +144,7 @@ body{
 }
 
 /* طبقة ثانية */
+
 .ring::after{
     content:"";
     position:absolute;
@@ -141,24 +164,44 @@ body{
     to{transform:rotate(-360deg);}
 }
 
-/* زر الدخول */
+/* ========================= */
+/* العنوان */
+/* ========================= */
+
+h2{
+    margin-top:10px;
+    margin-bottom:8px;
+    font-size:2rem;
+}
+
+p{
+    color:#b7c6d8;
+    margin-bottom:18px;
+}
+
+/* ========================= */
+/* الأزرار */
+/* ========================= */
+
 .login-btn{
     display:flex;
     justify-content:center;
     align-items:center;
     gap:10px;
 
-    padding:12px 14px;
-    border-radius:12px;
+    width:100%;
 
-    background:rgba(0,242,254,0.12);
-    border:1px solid rgba(0,242,254,0.3);
+    padding:13px;
+    margin-bottom:12px;
+
+    border-radius:14px;
+
+    background:rgba(0,242,254,0.10);
+    border:1px solid rgba(0,242,254,0.25);
 
     color:#00f2fe;
     text-decoration:none;
     font-weight:bold;
-
-    margin:15px auto;
 
     transition:0.3s;
 }
@@ -166,12 +209,18 @@ body{
 .login-btn:hover{
     background:#00f2fe;
     color:#000;
-    transform:scale(1.05);
+
+    transform:translateY(-3px);
+
+    box-shadow:0 0 20px rgba(0,242,254,0.4);
 }
 
-/* التواصل stacked */
+/* ========================= */
+/* التواصل */
+/* ========================= */
+
 .contact-section{
-    margin-top:15px;
+    margin-top:18px;
 }
 
 .contact-card{
@@ -193,19 +242,41 @@ body{
     text-decoration:none;
 
     position:relative;
-    transition:0.3s;
     overflow:hidden;
+
+    transition:0.3s;
 }
 
 .contact-card:hover{
     transform:translateY(-4px);
+
     border-color:#00f2fe;
+
     box-shadow:0 0 15px rgba(0,242,254,0.25);
 }
 
+.contact-card::after{
+    content:"";
+    position:absolute;
+
+    bottom:0;
+    left:0;
+
+    width:0%;
+    height:2px;
+
+    background:#00f2fe;
+
+    transition:0.3s;
+}
+
+.contact-card:hover::after{
+    width:100%;
+}
+
 .contact-card i{
-    color:#00f2fe;
     font-size:1.4rem;
+    color:#00f2fe;
 }
 
 .info span{
@@ -214,32 +285,19 @@ body{
 }
 
 .info p{
-    font-weight:bold;
     margin-top:3px;
+    font-weight:bold;
+    color:#fff;
 }
 
-/* خط تفاعلي */
-.contact-card::after{
-    content:"";
-    position:absolute;
-    bottom:0;
-    left:0;
-
-    width:0%;
-    height:2px;
-
-    background:#00f2fe;
-    transition:0.3s;
-}
-
-.contact-card:hover::after{
-    width:100%;
-}
-
+/* ========================= */
 /* زر الصوت */
+/* ========================= */
+
 #sound-toggle{
     position:fixed;
-    bottom:70px;
+
+    bottom:20px;
     left:20px;
 
     width:55px;
@@ -251,7 +309,10 @@ body{
     background:rgba(0,242,254,0.15);
     color:#00f2fe;
 
+    font-size:1.2rem;
+
     cursor:pointer;
+
     z-index:9999;
 }
 
@@ -260,9 +321,9 @@ body{
 
 <body>
 
-<!-- فيديو -->
+<!-- الفيديو -->
 <video id="bgVideo" autoplay loop muted playsinline class="background-video">
-<source src="video.mp4">
+<source src="video.mp4" type="video/mp4">
 </video>
 
 <div class="grid-overlay"></div>
@@ -274,50 +335,83 @@ body{
 
 <div class="cyber-card">
 
+<!-- الروبوت -->
 <div class="robot-emoji">🤖</div>
 
 <div class="speech-bubble" id="speech">
-مرحباً 👋 أنا أشرح عن الموقع
+مرحباً 👋 أنا مساعد الموقع
 </div>
 
+<!-- الصورة -->
 <div class="profile-wrapper">
 <img src="profile.jpg">
 <div class="ring"></div>
 </div>
 
+<!-- العنوان -->
 <h2>أكاديمية المطور</h2>
 
-<p>منصة تعليم الأمن السيبراني</p>
+<p>منصة تعليم الأمن السيبراني وتطوير الويب</p>
 
-<a class="login-btn" href="https://alikhalid.pythonanywhere.com" target="_blank">
+<!-- النظام الأول -->
+<a class="login-btn"
+href="https://alikhalid.pythonanywhere.com"
+target="_blank">
+
 <i class="fa-solid fa-right-to-bracket"></i>
-دخول النظام
+منصة الأكاديمية
+
 </a>
 
+<!-- النظام الثاني -->
+<a class="login-btn"
+href="https://cyber-matrix-learn--alioommzzxx.replit.app/"
+target="_blank">
+
+<i class="fa-solid fa-shield-halved"></i>
+Cyber Matrix Learn
+
+</a>
+
+<!-- التواصل -->
 <div class="contact-section">
 
-<a class="contact-card" href="https://instagram.com/x.5qe" target="_blank">
+<a class="contact-card"
+href="https://instagram.com/x.5qe"
+target="_blank">
+
 <div class="info">
 <span>Instagram</span>
 <p>x.5qe</p>
 </div>
+
 <i class="fa-brands fa-instagram"></i>
+
 </a>
 
-<a class="contact-card" href="https://t.me/c99ol" target="_blank">
+<a class="contact-card"
+href="https://t.me/c99ol"
+target="_blank">
+
 <div class="info">
 <span>Telegram</span>
 <p>@c99ol</p>
 </div>
+
 <i class="fa-brands fa-telegram"></i>
+
 </a>
 
-<a class="contact-card" href="mailto:mmdeedn@gmail.com">
+<a class="contact-card"
+href="mailto:mmdeedn@gmail.com">
+
 <div class="info">
 <span>Email</span>
 <p>mmdeedn@gmail.com</p>
 </div>
+
 <i class="fa-solid fa-envelope"></i>
+
 </a>
 
 </div>
@@ -326,7 +420,10 @@ body{
 
 <script>
 
+/* ========================= */
 /* الصوت */
+/* ========================= */
+
 const video = document.getElementById("bgVideo");
 const btn = document.getElementById("sound-toggle");
 
@@ -335,31 +432,48 @@ btn.addEventListener("click", async () => {
     video.muted = !video.muted;
 
     if(!video.muted){
+
         await video.play();
-        btn.innerHTML = '<i class="fa-solid fa-volume-xmark"></i>';
-    } else {
-        btn.innerHTML = '<i class="fa-solid fa-volume-high"></i>';
+
+        btn.innerHTML =
+        '<i class="fa-solid fa-volume-xmark"></i>';
+
+    }else{
+
+        btn.innerHTML =
+        '<i class="fa-solid fa-volume-high"></i>';
     }
 
 });
 
-/* الروبوت */
+/* ========================= */
+/* كلام الروبوت */
+/* ========================= */
+
 const speech = document.getElementById("speech");
 
 const messages = [
-    "مرحباً 👋 أنا مساعد الموقع",
-    "هذا موقع المهندس علي المعموري",
-    "مختص بالأمن السيبراني 🔐",
-    "يتعلم تطوير الويب 💻",
-    "منصة تعليمية تفاعلية 🚀"
+
+"مرحباً 👋 أنا مساعد الموقع",
+"هذا موقع المهندس علي المعموري",
+"مختص بالأمن السيبراني 🔐",
+"تطوير واجهات ومواقع حديثة 💻",
+"Cyber Matrix Learn 🚀"
+
 ];
 
 let i = 0;
 
 setInterval(() => {
+
     i++;
-    if(i >= messages.length) i = 0;
+
+    if(i >= messages.length){
+        i = 0;
+    }
+
     speech.textContent = messages[i];
+
 }, 3000);
 
 </script>
