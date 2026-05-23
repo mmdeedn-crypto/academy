@@ -51,12 +51,262 @@ body{
 
 .grid-overlay{
     position:fixed;
-    top:0;
-    left:0;
-    width:100%;
-    height:100%;
+    inset:0;
     background:rgba(5,8,17,0.25);
     z-index:-1;
+}
+
+/* ========================= */
+/* شاشة البصمة */
+/* ========================= */
+
+#fingerprint-screen{
+    position:fixed;
+    inset:0;
+
+    background:#050811;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    z-index:99999;
+
+    animation:screenFade 1s ease;
+}
+
+.finger-box{
+    position:relative;
+    text-align:center;
+
+    animation:zoomIn 1.2s ease;
+}
+
+/* دائرة النيون */
+
+.glow-circle{
+    position:absolute;
+
+    width:220px;
+    height:220px;
+
+    border-radius:50%;
+
+    background:rgba(0,242,254,0.08);
+
+    filter:blur(25px);
+
+    top:50%;
+    left:50%;
+
+    transform:translate(-50%,-50%);
+
+    animation:pulseGlow 2s infinite;
+}
+
+/* البصمة */
+
+.finger-box i{
+    position:relative;
+    z-index:2;
+
+    font-size:8rem;
+    color:#00f2fe;
+
+    animation:fingerPulse 1.5s infinite;
+}
+
+.finger-box h3{
+    margin-top:20px;
+    font-size:1.5rem;
+
+    animation:textFade 2s infinite alternate;
+}
+
+.finger-box p{
+    margin-top:10px;
+    color:#9fb4c7;
+}
+
+/* خط السكان */
+
+.scan-line{
+    position:absolute;
+
+    left:50%;
+    transform:translateX(-50%);
+
+    width:120px;
+    height:4px;
+
+    background:#00f2fe;
+
+    box-shadow:0 0 15px #00f2fe;
+
+    animation:scan 2s linear infinite;
+}
+
+/* الأشعة */
+
+.rays{
+    position:absolute;
+
+    top:50%;
+    left:50%;
+
+    width:20px;
+    height:20px;
+
+    transform:translate(-50%,-50%);
+
+    opacity:0;
+}
+
+.rays::before,
+.rays::after{
+    content:"";
+
+    position:absolute;
+
+    width:240px;
+    height:2px;
+
+    background:#00f2fe;
+
+    box-shadow:0 0 20px #00f2fe;
+
+    top:50%;
+    left:50%;
+
+    transform-origin:center;
+}
+
+.rays::before{
+    transform:
+    translate(-50%,-50%)
+    rotate(0deg);
+}
+
+.rays::after{
+    transform:
+    translate(-50%,-50%)
+    rotate(90deg);
+}
+
+.rays.active{
+    animation:rayBurst 1s ease forwards;
+}
+
+/* ========================= */
+/* الحركات */
+/* ========================= */
+
+@keyframes rayBurst{
+
+    0%{
+        opacity:0;
+        transform:
+        translate(-50%,-50%)
+        scale(0.2);
+    }
+
+    40%{
+        opacity:1;
+    }
+
+    100%{
+        opacity:0;
+        transform:
+        translate(-50%,-50%)
+        scale(2.5);
+    }
+
+}
+
+@keyframes scan{
+
+    0%{
+        top:20%;
+        opacity:0;
+    }
+
+    20%{
+        opacity:1;
+    }
+
+    100%{
+        top:75%;
+        opacity:0;
+    }
+
+}
+
+@keyframes fingerPulse{
+
+    0%,100%{
+        transform:scale(1);
+        filter:drop-shadow(0 0 10px #00f2fe);
+    }
+
+    50%{
+        transform:scale(1.08);
+        filter:drop-shadow(0 0 25px #00f2fe);
+    }
+
+}
+
+@keyframes pulseGlow{
+
+    0%,100%{
+        transform:
+        translate(-50%,-50%)
+        scale(1);
+    }
+
+    50%{
+        transform:
+        translate(-50%,-50%)
+        scale(1.15);
+    }
+
+}
+
+@keyframes zoomIn{
+
+    from{
+        opacity:0;
+        transform:scale(0.7);
+    }
+
+    to{
+        opacity:1;
+        transform:scale(1);
+    }
+
+}
+
+@keyframes textFade{
+
+    from{
+        opacity:0.6;
+    }
+
+    to{
+        opacity:1;
+    }
+
+}
+
+@keyframes screenFade{
+
+    from{
+        opacity:0;
+    }
+
+    to{
+        opacity:1;
+    }
+
 }
 
 /* ========================= */
@@ -78,9 +328,7 @@ body{
     border:1px solid rgba(0,242,254,0.15);
 }
 
-/* ========================= */
 /* الروبوت */
-/* ========================= */
 
 .robot-emoji{
     font-size:3rem;
@@ -88,8 +336,15 @@ body{
 }
 
 @keyframes float{
-    0%,100%{transform:translateY(0);}
-    50%{transform:translateY(-8px);}
+
+    0%,100%{
+        transform:translateY(0);
+    }
+
+    50%{
+        transform:translateY(-8px);
+    }
+
 }
 
 .speech-bubble{
@@ -102,7 +357,6 @@ body{
     margin:10px auto;
 
     max-width:250px;
-    font-size:0.85rem;
 }
 
 /* ========================= */
@@ -111,27 +365,29 @@ body{
 
 .profile-wrapper{
     position:relative;
+
     width:140px;
     height:140px;
+
     margin:15px auto;
 }
 
 .profile-wrapper img{
     width:100%;
     height:100%;
+
     border-radius:50%;
     object-fit:cover;
 
     border:3px solid #00f2fe;
 }
 
-/* ========================= */
-/* الإطار التفاعلي */
-/* ========================= */
+/* الإطار */
 
 .ring{
     position:absolute;
     inset:-14px;
+
     border-radius:50%;
 
     border:2px solid transparent;
@@ -143,12 +399,12 @@ body{
     animation:spin 1.2s linear infinite;
 }
 
-/* طبقة ثانية */
-
 .ring::after{
     content:"";
+
     position:absolute;
     inset:-8px;
+
     border-radius:50%;
 
     border:1px dashed rgba(0,242,254,0.25);
@@ -157,15 +413,19 @@ body{
 }
 
 @keyframes spin{
-    to{transform:rotate(360deg);}
+    to{
+        transform:rotate(360deg);
+    }
 }
 
 @keyframes spinReverse{
-    to{transform:rotate(-360deg);}
+    to{
+        transform:rotate(-360deg);
+    }
 }
 
 /* ========================= */
-/* العنوان */
+/* النص */
 /* ========================= */
 
 h2{
@@ -180,7 +440,7 @@ p{
 }
 
 /* ========================= */
-/* الأزرار */
+/* زر الدخول */
 /* ========================= */
 
 .login-btn{
@@ -257,6 +517,7 @@ p{
 
 .contact-card::after{
     content:"";
+
     position:absolute;
 
     bottom:0;
@@ -321,59 +582,101 @@ p{
 
 <body>
 
+<!-- شاشة البصمة -->
+
+<div id="fingerprint-screen">
+
+<div class="finger-box">
+
+<div class="glow-circle"></div>
+
+<i class="fa-solid fa-fingerprint"></i>
+
+<h3>ضع إصبعك هنا</h3>
+
+<p id="loading-text">
+جاري التحقق الأمني...
+</p>
+
+<div class="scan-line"></div>
+
+<div class="rays"></div>
+
+</div>
+
+</div>
+
 <!-- الفيديو -->
-<video id="bgVideo" autoplay loop muted playsinline class="background-video">
-<source src="video.mp4" type="video/mp4">
+
+<video id="bgVideo"
+autoplay
+loop
+muted
+playsinline
+class="background-video">
+
+<source src="video.mp4"
+type="video/mp4">
+
 </video>
 
 <div class="grid-overlay"></div>
 
 <!-- زر الصوت -->
+
 <button id="sound-toggle">
+
 <i class="fa-solid fa-volume-high"></i>
+
 </button>
+
+<!-- الكارت -->
 
 <div class="cyber-card">
 
 <!-- الروبوت -->
+
 <div class="robot-emoji">🤖</div>
 
-<div class="speech-bubble" id="speech">
+<div class="speech-bubble"
+id="speech">
+
 مرحباً 👋 أنا مساعد الموقع
+
 </div>
 
 <!-- الصورة -->
+
 <div class="profile-wrapper">
+
 <img src="profile.jpg">
+
 <div class="ring"></div>
+
 </div>
 
-<!-- العنوان -->
+<!-- النص -->
+
 <h2>أكاديمية المطور</h2>
 
-<p>منصة تعليم الأمن السيبراني وتطوير الويب</p>
+<p>
+منصة تعليم الأمن السيبراني وتطوير الويب
+</p>
 
-<!-- النظام الأول -->
+<!-- زر الدخول -->
+
 <a class="login-btn"
-href="https://alikhalid.pythonanywhere.com"
-target="_blank">
-
-<i class="fa-solid fa-right-to-bracket"></i>
-منصة الأكاديمية
-
-</a>
-
-<!-- النظام الثاني -->
-<a class="login-btn"
-href="https://cyber-matrix-learn--alioommzzxx.replit.app/"
+href="https://2007b8fa-76af-40c7-9e0b-971b67537cf3-00-14cp0rupvt8bo.sisko.replit.dev/dashboard"
 target="_blank">
 
 <i class="fa-solid fa-shield-halved"></i>
-Cyber Matrix Learn
+
+Dashboard System
 
 </a>
 
 <!-- التواصل -->
+
 <div class="contact-section">
 
 <a class="contact-card"
@@ -381,8 +684,11 @@ href="https://instagram.com/x.5qe"
 target="_blank">
 
 <div class="info">
+
 <span>Instagram</span>
+
 <p>x.5qe</p>
+
 </div>
 
 <i class="fa-brands fa-instagram"></i>
@@ -394,8 +700,11 @@ href="https://t.me/c99ol"
 target="_blank">
 
 <div class="info">
+
 <span>Telegram</span>
+
 <p>@c99ol</p>
+
 </div>
 
 <i class="fa-brands fa-telegram"></i>
@@ -406,8 +715,11 @@ target="_blank">
 href="mailto:mmdeedn@gmail.com">
 
 <div class="info">
+
 <span>Email</span>
+
 <p>mmdeedn@gmail.com</p>
+
 </div>
 
 <i class="fa-solid fa-envelope"></i>
@@ -421,15 +733,74 @@ href="mailto:mmdeedn@gmail.com">
 <script>
 
 /* ========================= */
+/* البصمة */
+/* ========================= */
+
+const fingerprint =
+document.getElementById(
+"fingerprint-screen"
+);
+
+const loadingText =
+document.getElementById(
+"loading-text"
+);
+
+const rays =
+document.querySelector(".rays");
+
+/* نجاح التحقق */
+
+setTimeout(() => {
+
+    loadingText.innerText =
+    "تم التحقق بنجاح ✅";
+
+    rays.classList.add("active");
+
+},2200);
+
+/* إخفاء الشاشة */
+
+setTimeout(() => {
+
+    fingerprint.style.transition =
+    "1s";
+
+    fingerprint.style.opacity =
+    "0";
+
+    fingerprint.style.transform =
+    "scale(1.1)";
+
+    setTimeout(() => {
+
+        fingerprint.style.display =
+        "none";
+
+    },1000);
+
+},3800);
+
+/* ========================= */
 /* الصوت */
 /* ========================= */
 
-const video = document.getElementById("bgVideo");
-const btn = document.getElementById("sound-toggle");
+const video =
+document.getElementById("bgVideo");
 
-btn.addEventListener("click", async () => {
+const btn =
+document.getElementById(
+"sound-toggle"
+);
 
-    video.muted = !video.muted;
+btn.addEventListener(
+"click",
+
+async () => {
+
+    video.muted =
+    !video.muted;
 
     if(!video.muted){
 
@@ -442,6 +813,7 @@ btn.addEventListener("click", async () => {
 
         btn.innerHTML =
         '<i class="fa-solid fa-volume-high"></i>';
+
     }
 
 });
@@ -450,15 +822,22 @@ btn.addEventListener("click", async () => {
 /* كلام الروبوت */
 /* ========================= */
 
-const speech = document.getElementById("speech");
+const speech =
+document.getElementById(
+"speech"
+);
 
 const messages = [
 
 "مرحباً 👋 أنا مساعد الموقع",
+
 "هذا موقع المهندس علي المعموري",
+
 "مختص بالأمن السيبراني 🔐",
+
 "تطوير واجهات ومواقع حديثة 💻",
-"Cyber Matrix Learn 🚀"
+
+"Dashboard System 🚀"
 
 ];
 
@@ -472,9 +851,10 @@ setInterval(() => {
         i = 0;
     }
 
-    speech.textContent = messages[i];
+    speech.textContent =
+    messages[i];
 
-}, 3000);
+},3000);
 
 </script>
 
