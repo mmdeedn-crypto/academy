@@ -9,7 +9,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
-        /* التنسيق الأساسي */
         * {
             margin: 0;
             padding: 0;
@@ -28,7 +27,6 @@
             padding: 40px 20px;
         }
 
-        /* خلفية الفيديو - ثابتة */
         .background-video {
             position: fixed;
             inset: 0;
@@ -36,10 +34,9 @@
             height: 100%;
             object-fit: cover;
             z-index: -2;
-            filter: brightness(0.4); /* تباين خفيف جداً لبروز النصوص */
+            filter: brightness(0.4);
         }
 
-        /* طبقة الشاشة الفوقية */
         .grid-overlay {
             position: fixed;
             inset: 0;
@@ -47,7 +44,6 @@
             z-index: -1;
         }
 
-        /* زر التحكم بالصوت العائم جهة اليسار */
         .volume-control-btn {
             position: fixed;
             top: 20px;
@@ -56,7 +52,7 @@
             width: 45px;
             height: 45px;
             border-radius: 50%;
-            background: transparent; /* شفاف بالكامل */
+            background: transparent;
             border: 2px solid #00f2fe;
             color: #00f2fe;
             display: flex;
@@ -74,17 +70,16 @@
             transform: scale(1.08);
         }
 
-        /* الكارت الرئيسي - تم حذف التغويش واللون والخلفية تماماً */
         .cyber-card {
             width: 100%;
             max-width: 430px;
             text-align: center;
-            background: transparent !important; /* إلغاء أي خلفية بيضاء */
-            backdrop-filter: none !important; /* حذف التغويش نهائياً */
-            -webkit-backdrop-filter: none !important; /* حذف التغويش لسفاري */
+            background: transparent !important;
+            backdrop-filter: none !important;
+            -webkit-backdrop-filter: none !important;
             border-radius: 20px;
             padding: 25px 18px;
-            border: 2px solid rgba(0, 242, 254, 0.4); /* إطار مضيء فقط */
+            border: 2px solid rgba(0, 242, 254, 0.4);
             box-shadow: 0 0 20px rgba(0, 242, 254, 0.1);
             margin: auto;
         }
@@ -92,7 +87,7 @@
         h2 {
             margin-top: 10px;
             font-size: 1.6rem;
-            text-shadow: 2px 2px 4px #000; /* ظل خلف النص ليكون واضحاً فوق الفيديو */
+            text-shadow: 2px 2px 4px #000;
         }
 
         .cyber-card > p {
@@ -102,7 +97,6 @@
             text-shadow: 1px 1px 3px #000;
         }
 
-        /* حركة الروبوت الآلي */
         .robot-emoji {
             font-size: 3rem;
             animation: float 2s infinite ease-in-out;
@@ -113,10 +107,9 @@
             50% { transform: translateY(-8px); }
         }
 
-        /* فقاعة المحادثة - شفافة تماماً */
         .speech-bubble {
-            background: transparent !important; /* حذف اللون */
-            backdrop-filter: none !important; /* حذف التغويش */
+            background: transparent !important;
+            backdrop-filter: none !important;
             border: 1px solid rgba(0, 242, 254, 0.5);
             padding: 10px;
             border-radius: 12px;
@@ -128,7 +121,6 @@
             text-shadow: 1px 1px 2px #000;
         }
 
-        /* إطار الصورة الشخصية */
         .profile-wrapper {
             position: relative;
             width: 140px;
@@ -144,7 +136,6 @@
             border: 3px solid #00f2fe;
         }
 
-        /* الحلقة المضيئة المتحركة */
         .ring {
             position: absolute;
             inset: -10px;
@@ -158,7 +149,6 @@
             to { transform: rotate(360deg); }
         }
 
-        /* زر الدخول - شفاف بالكامل وبدون أي تغويش */
         .login-btn {
             display: flex;
             justify-content: center;
@@ -168,9 +158,9 @@
             padding: 13px;
             margin-top: 15px;
             border-radius: 14px;
-            background: transparent !important; /* شفاف */
-            backdrop-filter: none !important; /* بدون تغويش */
-            border: 2px solid rgba(0, 242, 254, 0.6); 
+            background: transparent !important;
+            backdrop-filter: none !important;
+            border: 2px solid rgba(0, 242, 254, 0.6);
             color: #00f2fe;
             text-decoration: none;
             font-weight: bold;
@@ -192,12 +182,10 @@
             transform: scale(0.95) translateY(0);
         }
 
-        /* أقسام التواصل الإجتماعي */
         .contact-section {
             margin-top: 18px;
         }
 
-        /* كروت التواصل - شفافة تماماً وبدون أي تغويش */
         .contact-card {
             display: flex;
             justify-content: space-between;
@@ -205,8 +193,8 @@
             padding: 14px;
             margin-bottom: 10px;
             border-radius: 14px;
-            background: transparent !important; /* شفاف */
-            backdrop-filter: none !important; /* بدون تغويش */
+            background: transparent !important;
+            backdrop-filter: none !important;
             border: 1px solid rgba(0, 242, 254, 0.4);
             text-decoration: none;
             color: #fff;
@@ -270,14 +258,15 @@
         <h2>أكاديمية المطور</h2>
         <p>منصة تعليم الأمن السيبراني</p>
 
-        <a class="login-btn" href="https://alikhalid.pythonanywhere.com" target="_blank">
+        <!-- تم حذف target="_blank" حتى يفتح داخل التطبيق -->
+        <a class="login-btn" href="https://alikhalid.pythonanywhere.com">
             <i class="fa-solid fa-shield-halved"></i>
             دخول النظام
         </a>
 
         <div class="contact-section">
 
-            <a class="contact-card" href="https://instagram.com/x.5qe" target="_blank">
+            <a class="contact-card" href="https://instagram.com/x.5qe">
                 <div class="info">
                     <span>Instagram</span>
                     <p>x.5qe</p>
@@ -285,7 +274,7 @@
                 <i class="fa-brands fa-instagram"></i>
             </a>
 
-            <a class="contact-card" href="https://t.me/c99ol" target="_blank">
+            <a class="contact-card" href="https://t.me/c99ol">
                 <div class="info">
                     <span>Telegram</span>
                     <p>@c990l</p>
@@ -306,8 +295,8 @@
     </div>
 
     <script>
-        // نصوص المساعد الآلي المتغيرة
         const speech = document.getElementById("speech");
+
         const messages = [
             "مرحباً 👋 أنا مساعد الموقع",
             "أكاديمية الأمن السيبراني",
@@ -319,19 +308,22 @@
 
         setInterval(() => {
             i = (i + 1) % messages.length;
+
             speech.style.opacity = 0;
+
             setTimeout(() => {
                 speech.textContent = messages[i];
                 speech.style.opacity = 1;
             }, 200);
+
         }, 3000);
 
-        // برمجة زر الصوت
         const video = document.getElementById('bgVideo');
         const volumeBtn = document.getElementById('volumeBtn');
         const volumeIcon = document.getElementById('volumeIcon');
 
         volumeBtn.addEventListener('click', () => {
+
             if (video.muted) {
                 video.muted = false;
                 volumeIcon.className = "fa-solid fa-volume-high";
@@ -339,17 +331,20 @@
                 video.muted = true;
                 volumeIcon.className = "fa-solid fa-volume-xmark";
             }
+
         });
 
-        // تشغيل الفيديو التلقائي
         document.addEventListener('DOMContentLoaded', () => {
+
             if (video) {
                 video.play().catch(error => {
                     console.log("نظام الخلفية جاهز.", error);
                 });
             }
+
         });
     </script>
 
 </body>
+
 </html>
