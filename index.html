@@ -5,12 +5,16 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Matrix VIP | علي المعموري</title>
+<title>Matrix VIP</title>
 
 <link rel="stylesheet"
 href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
 <style>
+
+/* ========================= */
+/* الأساس */
+/* ========================= */
 
 *{
     margin:0;
@@ -21,10 +25,30 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
 
 body{
     background:#050811;
-    color:white;
-    overflow-y:auto;        /* ✅ تم التصليح - كان overflow:hidden */
-    min-height:100vh;       /* ✅ تم التصليح - كان height:100vh */
+    color:#fff;
+    overflow:hidden;
+    height:100vh;
 }
+
+/* ========================= */
+/* Loader */
+/* ========================= */
+
+#loader{
+    position:fixed;
+    inset:0;
+    background:#050811;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    color:#00f2fe;
+    font-size:1.2rem;
+    z-index:99999;
+}
+
+/* ========================= */
+/* الفيديو */
+/* ========================= */
 
 .background-video{
     position:fixed;
@@ -33,8 +57,10 @@ body{
     height:100%;
     object-fit:cover;
     z-index:-3;
-    filter:brightness(0.35) contrast(1.1);
+    filter:brightness(0.35);
 }
+
+/* overlay */
 
 .overlay{
     position:fixed;
@@ -42,6 +68,8 @@ body{
     background:radial-gradient(circle at center, rgba(0,242,254,0.08), rgba(0,0,0,0.7));
     z-index:-2;
 }
+
+/* grid */
 
 .grid{
     position:fixed;
@@ -51,397 +79,243 @@ body{
     linear-gradient(90deg, rgba(0,242,254,0.05) 1px, transparent 1px);
     background-size:40px 40px;
     z-index:-1;
-    animation:gridMove 10s linear infinite;
 }
 
-@keyframes gridMove{
-    from{ transform:translateY(0); }
-    to{ transform:translateY(40px); }
-}
-
-#boot-screen{
-    position:fixed;
-    inset:0;
-    background:#02040a;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    flex-direction:column;
-    z-index:99999;
-    transition:1s;
-}
-
-.fingerprint-container{
-    position:relative;
-    width:240px;
-    height:240px;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-}
-
-.circle{
-    position:absolute;
-    border-radius:50%;
-    border:2px solid rgba(0,242,254,0.25);
-    animation:rotate 8s linear infinite;
-}
-
-.circle:nth-child(1){ width:240px; height:240px; }
-.circle:nth-child(2){ width:190px; height:190px; animation-direction:reverse; }
-.circle:nth-child(3){ width:140px; height:140px; }
-
-.fingerprint{
-    font-size:7rem;
-    color:#00f2fe;
-    z-index:5;
-    animation:pulse 1.5s infinite;
-    filter:drop-shadow(0 0 20px #00f2fe);
-}
-
-.scan{
-    position:absolute;
-    width:180px;
-    height:4px;
-    background:#00f2fe;
-    box-shadow:0 0 15px #00f2fe;
-    animation:scanMove 2s infinite;
-}
-
-.boot-title{
-    margin-top:25px;
-    font-size:1.4rem;
-    letter-spacing:2px;
-    color:#00f2fe;
-}
-
-.boot-sub{
-    margin-top:10px;
-    color:#8aa0b8;
-}
+/* ========================= */
+/* layout */
+/* ========================= */
 
 .container{
-    position:relative;
-    width:100%;
-    min-height:100vh;       /* ✅ تم التصليح - كان height:100vh */
+    height:100vh;
     display:flex;
     justify-content:center;
     align-items:center;
     padding:20px;
 }
 
-.cyber-card{
+/* card */
+
+.card{
     width:100%;
     max-width:430px;
+    text-align:center;
+
     backdrop-filter:blur(12px);
     background:rgba(255,255,255,0.04);
+
     border:1px solid rgba(0,242,254,0.15);
     border-radius:28px;
-    padding:30px 22px;
-    text-align:center;
-    box-shadow:0 0 40px rgba(0,242,254,0.12);
+
+    padding:30px 20px;
+
+    box-shadow:0 0 40px rgba(0,242,254,0.1);
 }
+
+/* robot */
 
 .robot{
     font-size:3rem;
-    animation:float 2s infinite;
+    animation:float 2s infinite ease-in-out;
 }
 
-.robot-text{
-    margin-top:12px;
+@keyframes float{
+    0%,100%{transform:translateY(0);}
+    50%{transform:translateY(-8px);}
+}
+
+.text{
+    margin-top:10px;
     background:rgba(0,242,254,0.08);
     border:1px solid rgba(0,242,254,0.25);
     padding:12px;
     border-radius:14px;
-    color:#d7e7f5;
+    color:#cfe9ff;
 }
 
-.profile-area{
-    position:relative;
-    width:160px;
-    height:160px;
+/* ========================= */
+/* صورة سريعة */
+/* ========================= */
+
+.profile{
+    width:150px;
+    height:150px;
     margin:25px auto;
+    position:relative;
 }
 
-.profile-area img{
+.profile img{
     width:100%;
     height:100%;
-    object-fit:cover;
     border-radius:50%;
+    object-fit:cover;
     border:3px solid #00f2fe;
 }
 
-.energy-ring{
-    position:absolute;
-    inset:-14px;
-    border-radius:50%;
-    border-top:3px solid #00f2fe;
-    border-right:3px solid rgba(0,242,254,0.3);
-    animation:ringRotate 1.5s linear infinite;
-    box-shadow:0 0 25px #00f2fe;
-}
+/* إطار */
 
-.scan-layer{
-    position:absolute;
-    top:0;
-    left:0;
-    width:100%;
-    height:100%;
-    border-radius:50%;
-    overflow:hidden;
-}
-
-.scan-layer::before{
+.profile::before{
     content:"";
     position:absolute;
-    width:100%;
-    height:35%;
-    background:linear-gradient(to bottom, transparent, rgba(0,242,254,0.25), transparent);
-    animation:scanFace 3s infinite;
+    inset:-10px;
+    border-radius:50%;
+    border:2px solid transparent;
+    border-top:2px solid #00f2fe;
+    border-right:2px solid rgba(0,242,254,0.4);
+    animation:spin 1.5s linear infinite;
 }
 
-.title{
-    font-size:2rem;
-    font-weight:bold;
-    margin-top:10px;
-    text-shadow:0 0 15px rgba(0,242,254,0.5);
+@keyframes spin{
+    to{transform:rotate(360deg);}
 }
 
-.sub{
-    margin-top:8px;
-    color:#b4c6d8;
-    line-height:1.7;
-}
+/* ========================= */
+/* زر الدخول */
+/* ========================= */
 
-.enter-btn{
+.vip-btn{
     position:relative;
+
     margin-top:25px;
-    width:100%;
+
     display:flex;
     justify-content:center;
     align-items:center;
-    gap:12px;
+    gap:10px;
+
     padding:16px;
+
     border-radius:18px;
+
     text-decoration:none;
-    color:#fff;
-    font-size:1.1rem;
+
+    color:#00f2fe;
     font-weight:bold;
-    overflow:hidden;
+
     background:rgba(0,242,254,0.08);
-    border:1px solid rgba(0,242,254,0.35);
-    transition:0.4s;
-}
 
-.enter-btn::before{
-    content:"";
-    position:absolute;
-    top:0;
-    left:-120%;
-    width:100%;
-    height:100%;
-    background:linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent);
-    transition:0.6s;
-}
+    border:1px solid rgba(0,242,254,0.4);
 
-.enter-btn:hover::before{ left:120%; }
-
-.enter-btn:hover{
-    transform:translateY(-5px);
-    box-shadow:0 0 30px rgba(0,242,254,0.45);
-    border-color:#00f2fe;
-}
-
-.contacts{ margin-top:22px; }
-
-.contact{
-    position:relative;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    text-decoration:none;
-    color:white;
-    padding:14px 16px;
-    margin-bottom:12px;
-    border-radius:15px;
-    background:rgba(255,255,255,0.04);
-    border:1px solid rgba(0,242,254,0.12);
     overflow:hidden;
+
     transition:0.3s;
 }
 
-.contact::after{
-    content:"";
-    position:absolute;
-    bottom:0;
-    left:0;
-    width:0%;
-    height:2px;
-    background:#00f2fe;
-    transition:0.4s;
-}
-
-.contact:hover::after{ width:100%; }
-
-.contact:hover{
-    transform:translateY(-4px);
+.vip-btn:hover{
+    transform:translateY(-5px);
+    box-shadow:0 0 25px rgba(0,242,254,0.5);
     border-color:#00f2fe;
+    color:#fff;
 }
 
-.contact i{ font-size:1.4rem; color:#00f2fe; }
-.contact span{ color:#9fb4c7; font-size:0.8rem; }
+/* ========================= */
+/* أنيميشن النص */
+/* ========================= */
 
-#sound-btn{
-    position:fixed;
-    bottom:20px;
-    left:20px;
-    width:60px;
-    height:60px;
-    border:none;
-    border-radius:50%;
-    background:rgba(0,242,254,0.12);
-    color:#00f2fe;
-    font-size:1.2rem;
-    cursor:pointer;
-    backdrop-filter:blur(10px);
-    z-index:9999;
+@keyframes fade{
+    0%,100%{opacity:1;}
 }
 
-@keyframes rotate{ to{ transform:rotate(360deg); } }
-@keyframes pulse{
-    0%,100%{ transform:scale(1); }
-    50%{ transform:scale(1.08); }
-}
-@keyframes scanMove{
-    0%{ top:25%; opacity:0; }
-    30%{ opacity:1; }
-    100%{ top:70%; opacity:0; }
-}
-@keyframes ringRotate{ to{ transform:rotate(360deg); } }
-@keyframes scanFace{
-    0%{ top:-40%; }
-    100%{ top:120%; }
-}
-@keyframes float{
-    0%,100%{ transform:translateY(0); }
-    50%{ transform:translateY(-8px); }
-}
+/* ========================= */
 
 </style>
 </head>
 
 <body>
 
-<div id="boot-screen">
-<div class="fingerprint-container">
-<div class="circle"></div>
-<div class="circle"></div>
-<div class="circle"></div>
-<div class="scan"></div>
-<i class="fa-solid fa-fingerprint fingerprint"></i>
-</div>
-<div class="boot-title">MATRIX IDENTITY SYSTEM</div>
-<div class="boot-sub" id="boot-text">جارِ التحقق الأمني...</div>
-</div>
+<!-- Loader -->
+<div id="loader">⚡ Loading Matrix VIP...</div>
 
-<video autoplay loop muted playsinline class="background-video" id="bgVideo">
+<!-- الفيديو (محسن) -->
+<video id="bgVideo"
+autoplay
+muted
+loop
+playsinline
+preload="auto"
+class="background-video">
+
 <source src="video.mp4" type="video/mp4">
+
 </video>
 
 <div class="overlay"></div>
 <div class="grid"></div>
 
-<!-- زر الصوت: يبدأ بأيقونة الصمت لأن الفيديو muted -->
-<button id="sound-btn">
-<i class="fa-solid fa-volume-xmark"></i>
-</button>
-
+<!-- المحتوى -->
 <div class="container">
-<div class="cyber-card">
+
+<div class="card">
 
 <div class="robot">🤖</div>
-<div class="robot-text" id="robotText">مرحباً بك داخل نظام Matrix VIP</div>
 
-<div class="profile-area">
-<img src="profile.jpg">
-<div class="energy-ring"></div>
-<div class="scan-layer"></div>
+<div class="text" id="txt">
+جارِ التحميل...
 </div>
 
-<div class="title">أكاديمية المطور</div>
-<div class="sub">واجهة تعليم الأمن السيبراني وتطوير الأنظمة الحديثة</div>
+<div class="profile">
 
-<a class="enter-btn"
-href="https://2007b8fa-76af-40c7-9e0b-971b67537cf3-00-14cp0rupvt8bo.sisko.replit.dev/dashboard"
+<!-- صورة سريعة -->
+<img src="profile.jpg" loading="eager" decoding="async">
+
+</div>
+
+<h2>أكاديمية المطور</h2>
+
+<p>واجهة تعليم الأمن السيبراني</p>
+
+<!-- زر سريع -->
+<a class="vip-btn"
+href="https://alikhalid.pythonanywhere.com"
 target="_blank">
+
 <i class="fa-solid fa-shield-halved"></i>
-ENTER MATRIX SYSTEM
-</a>
+دخول النظام
 
-<div class="contacts">
-
-<a class="contact" href="https://instagram.com/x.5qe" target="_blank">
-<div><span>Instagram</span><div>x.5qe</div></div>
-<i class="fa-brands fa-instagram"></i>
-</a>
-
-<a class="contact" href="https://t.me/c99ol" target="_blank">
-<div><span>Telegram</span><div>@c99ol</div></div>
-<i class="fa-brands fa-telegram"></i>
-</a>
-
-<a class="contact" href="mailto:mmdeedn@gmail.com">
-<div><span>Email</span><div>mmdeedn@gmail.com</div></div>
-<i class="fa-solid fa-envelope"></i>
 </a>
 
 </div>
-</div>
+
 </div>
 
 <script>
 
-const boot = document.getElementById("boot-screen");
-const bootText = document.getElementById("boot-text");
+/* loader سريع */
 
-setTimeout(()=>{ bootText.innerHTML = "ACCESS GRANTED ✅"; }, 2200);
-setTimeout(()=>{
-    boot.style.opacity = "0";
-    setTimeout(()=>{ boot.style.display = "none"; }, 1000);
-}, 4200);
+window.addEventListener("load", () => {
 
-const robotText = document.getElementById("robotText");
+    setTimeout(() => {
+        document.getElementById("loader").style.opacity = "0";
+
+        setTimeout(() => {
+            document.getElementById("loader").remove();
+        }, 300);
+
+    }, 600);
+
+});
+
+/* نص متغير */
+
+const txt = document.getElementById("txt");
+
 const messages = [
-    "مرحباً بك داخل نظام Matrix VIP",
-    "المهندس علي المعموري 🔥",
-    "Cyber Security Expert 🔐",
-    "Web Developer 💻",
-    "Artificial Intelligence Interface 🤖"
+"مرحباً بك داخل النظام ⚡",
+"المهندس علي المعموري",
+"Cyber Security 🔐",
+"Web Development 💻",
+"Matrix VIP 🚀"
 ];
 
 let i = 0;
-setInterval(()=>{
-    i++;
-    if(i >= messages.length){ i = 0; }
-    robotText.innerHTML = messages[i];
-}, 3000);
 
-/* ✅ الصوت - تم التصليح */
-const video = document.getElementById("bgVideo");
-const soundBtn = document.getElementById("sound-btn");
+setInterval(() => {
 
-soundBtn.addEventListener("click", async ()=>{
+i++;
+if(i>=messages.length) i=0;
 
-    if(video.muted){
-        video.muted = false;
-        try{ await video.play(); }catch(e){}
-        soundBtn.innerHTML = '<i class="fa-solid fa-volume-high"></i>';
-    } else {
-        video.muted = true;
-        soundBtn.innerHTML = '<i class="fa-solid fa-volume-xmark"></i>';
-    }
+txt.textContent = messages[i];
 
-});
+},2500);
 
 </script>
 
