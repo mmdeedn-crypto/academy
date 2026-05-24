@@ -31,23 +31,7 @@ body{
 }
 
 /* ========================= */
-/* Loader */
-/* ========================= */
-
-#loader{
-    position:fixed;
-    inset:0;
-    background:#050811;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    color:#00f2fe;
-    font-size:1.2rem;
-    z-index:99999;
-}
-
-/* ========================= */
-/* الفيديو */
+/* الفيديو (خفيف) */
 /* ========================= */
 
 .background-video{
@@ -60,29 +44,27 @@ body{
     filter:brightness(0.35);
 }
 
-/* overlay */
-
+/* طبقة */
 .overlay{
     position:fixed;
     inset:0;
-    background:radial-gradient(circle at center, rgba(0,242,254,0.08), rgba(0,0,0,0.7));
+    background:radial-gradient(circle at center, rgba(0,242,254,0.06), rgba(0,0,0,0.75));
     z-index:-2;
 }
 
-/* grid */
-
+/* grid خفيف */
 .grid{
     position:fixed;
     inset:0;
     background-image:
-    linear-gradient(rgba(0,242,254,0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0,242,254,0.05) 1px, transparent 1px);
-    background-size:40px 40px;
+    linear-gradient(rgba(0,242,254,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,242,254,0.04) 1px, transparent 1px);
+    background-size:45px 45px;
     z-index:-1;
 }
 
 /* ========================= */
-/* layout */
+/* المحتوى */
 /* ========================= */
 
 .container{
@@ -93,25 +75,24 @@ body{
     padding:20px;
 }
 
-/* card */
+/* الكارت */
 
 .card{
     width:100%;
-    max-width:430px;
+    max-width:420px;
+
     text-align:center;
 
-    backdrop-filter:blur(12px);
+    backdrop-filter:blur(10px);
     background:rgba(255,255,255,0.04);
 
     border:1px solid rgba(0,242,254,0.15);
-    border-radius:28px;
+    border-radius:25px;
 
-    padding:30px 20px;
-
-    box-shadow:0 0 40px rgba(0,242,254,0.1);
+    padding:28px 20px;
 }
 
-/* robot */
+/* الروبوت */
 
 .robot{
     font-size:3rem;
@@ -123,23 +104,25 @@ body{
     50%{transform:translateY(-8px);}
 }
 
+/* نص متغير */
+
 .text{
     margin-top:10px;
     background:rgba(0,242,254,0.08);
-    border:1px solid rgba(0,242,254,0.25);
+    border:1px solid rgba(0,242,254,0.2);
     padding:12px;
-    border-radius:14px;
+    border-radius:12px;
     color:#cfe9ff;
 }
 
 /* ========================= */
-/* صورة سريعة */
+/* الصورة (سريعة جداً) */
 /* ========================= */
 
 .profile{
     width:150px;
     height:150px;
-    margin:25px auto;
+    margin:22px auto;
     position:relative;
 }
 
@@ -151,8 +134,7 @@ body{
     border:3px solid #00f2fe;
 }
 
-/* إطار */
-
+/* إطار خفيف */
 .profile::before{
     content:"";
     position:absolute;
@@ -160,7 +142,7 @@ body{
     border-radius:50%;
     border:2px solid transparent;
     border-top:2px solid #00f2fe;
-    border-right:2px solid rgba(0,242,254,0.4);
+    border-right:2px solid rgba(0,242,254,0.35);
     animation:spin 1.5s linear infinite;
 }
 
@@ -169,69 +151,50 @@ body{
 }
 
 /* ========================= */
-/* زر الدخول */
+/* الزر */
 /* ========================= */
 
 .vip-btn{
-    position:relative;
-
-    margin-top:25px;
+    margin-top:22px;
 
     display:flex;
     justify-content:center;
     align-items:center;
     gap:10px;
 
-    padding:16px;
+    padding:15px;
 
-    border-radius:18px;
+    border-radius:16px;
 
     text-decoration:none;
+    font-weight:bold;
 
     color:#00f2fe;
-    font-weight:bold;
 
     background:rgba(0,242,254,0.08);
 
-    border:1px solid rgba(0,242,254,0.4);
-
-    overflow:hidden;
+    border:1px solid rgba(0,242,254,0.35);
 
     transition:0.3s;
 }
 
 .vip-btn:hover{
-    transform:translateY(-5px);
-    box-shadow:0 0 25px rgba(0,242,254,0.5);
-    border-color:#00f2fe;
+    transform:translateY(-4px);
+    box-shadow:0 0 20px rgba(0,242,254,0.4);
     color:#fff;
 }
-
-/* ========================= */
-/* أنيميشن النص */
-/* ========================= */
-
-@keyframes fade{
-    0%,100%{opacity:1;}
-}
-
-/* ========================= */
 
 </style>
 </head>
 
 <body>
 
-<!-- Loader -->
-<div id="loader">⚡ Loading Matrix VIP...</div>
-
 <!-- الفيديو (محسن) -->
 <video id="bgVideo"
-autoplay
 muted
 loop
 playsinline
-preload="auto"
+preload="metadata"
 class="background-video">
 
 <source src="video.mp4" type="video/mp4">
@@ -263,7 +226,6 @@ class="background-video">
 
 <p>واجهة تعليم الأمن السيبراني</p>
 
-<!-- زر سريع -->
 <a class="vip-btn"
 href="https://alikhalid.pythonanywhere.com"
 target="_blank">
@@ -279,19 +241,14 @@ target="_blank">
 
 <script>
 
-/* loader سريع */
+/* تشغيل الفيديو بعد فتح الصفحة مباشرة */
 
 window.addEventListener("load", () => {
+    const video = document.getElementById("bgVideo");
 
     setTimeout(() => {
-        document.getElementById("loader").style.opacity = "0";
-
-        setTimeout(() => {
-            document.getElementById("loader").remove();
-        }, 300);
-
-    }, 600);
-
+        video.play();
+    }, 300);
 });
 
 /* نص متغير */
@@ -299,7 +256,7 @@ window.addEventListener("load", () => {
 const txt = document.getElementById("txt");
 
 const messages = [
-"مرحباً بك داخل النظام ⚡",
+"مرحباً بك ⚡",
 "المهندس علي المعموري",
 "Cyber Security 🔐",
 "Web Development 💻",
@@ -309,13 +266,10 @@ const messages = [
 let i = 0;
 
 setInterval(() => {
-
 i++;
-if(i>=messages.length) i=0;
-
+if(i >= messages.length) i = 0;
 txt.textContent = messages[i];
-
-},2500);
+}, 2500);
 
 </script>
 
