@@ -36,75 +36,70 @@
             height: 100%;
             object-fit: cover;
             z-index: -2;
-            filter: brightness(0.35);
+            filter: brightness(0.4); /* تباين خفيف جداً لبروز النصوص */
         }
 
         /* طبقة الشاشة الفوقية */
         .grid-overlay {
             position: fixed;
             inset: 0;
-            background: rgba(5, 8, 17, 0.25);
+            background: rgba(5, 8, 17, 0.1);
             z-index: -1;
         }
 
-        /* زر التحكم بالصوت العائم (جديد) */
+        /* زر التحكم بالصوت العائم جهة اليسار */
         .volume-control-btn {
             position: fixed;
             top: 20px;
-            left: 20px; /* تم وضعه جهة اليسار ليتناسق مع التصفح العربي RTL */
+            left: 20px;
             z-index: 100;
             width: 45px;
             height: 45px;
             border-radius: 50%;
-            background: rgba(0, 242, 254, 0.1);
-            border: 1px solid rgba(0, 242, 254, 0.4);
+            background: transparent; /* شفاف بالكامل */
+            border: 2px solid #00f2fe;
             color: #00f2fe;
             display: flex;
             justify-content: center;
             align-items: center;
             cursor: pointer;
             font-size: 1.1rem;
-            backdrop-filter: blur(5px);
-            -webkit-backdrop-filter: blur(5px);
             transition: all 0.3s ease;
-            box-shadow: 0 0 10px rgba(0, 242, 254, 0.2);
+            box-shadow: 0 0 10px rgba(0, 242, 254, 0.3);
         }
 
         .volume-control-btn:hover {
             background: #00f2fe;
             color: #000;
             transform: scale(1.08);
-            box-shadow: 0 0 15px rgba(0, 242, 254, 0.5);
         }
 
-        .volume-control-btn:active {
-            transform: scale(0.92);
-        }
-
-        /* الكارت الرئيسي */
+        /* الكارت الرئيسي - تم حذف التغويش واللون والخلفية تماماً */
         .cyber-card {
             width: 100%;
             max-width: 430px;
             text-align: center;
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            background: rgba(255, 255, 255, 0.03);
+            background: transparent !important; /* إلغاء أي خلفية بيضاء */
+            backdrop-filter: none !important; /* حذف التغويش نهائياً */
+            -webkit-backdrop-filter: none !important; /* حذف التغويش لسفاري */
             border-radius: 20px;
             padding: 25px 18px;
-            border: 1px solid rgba(0, 242, 254, 0.15);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            border: 2px solid rgba(0, 242, 254, 0.4); /* إطار مضيء فقط */
+            box-shadow: 0 0 20px rgba(0, 242, 254, 0.1);
             margin: auto;
         }
 
         h2 {
             margin-top: 10px;
             font-size: 1.6rem;
+            text-shadow: 2px 2px 4px #000; /* ظل خلف النص ليكون واضحاً فوق الفيديو */
         }
 
         .cyber-card > p {
             color: #aaa;
             font-size: 0.9rem;
             margin-bottom: 15px;
+            text-shadow: 1px 1px 3px #000;
         }
 
         /* حركة الروبوت الآلي */
@@ -118,16 +113,19 @@
             50% { transform: translateY(-8px); }
         }
 
-        /* فقاعة المحادثة */
+        /* فقاعة المحادثة - شفافة تماماً */
         .speech-bubble {
-            background: rgba(0, 242, 254, 0.12);
-            border: 1px solid rgba(0, 242, 254, 0.4);
+            background: transparent !important; /* حذف اللون */
+            backdrop-filter: none !important; /* حذف التغويش */
+            border: 1px solid rgba(0, 242, 254, 0.5);
             padding: 10px;
             border-radius: 12px;
             margin: 10px auto;
             max-width: 250px;
             font-size: 0.85rem;
             transition: opacity 0.2s ease-in-out;
+            color: #00f2fe;
+            text-shadow: 1px 1px 2px #000;
         }
 
         /* إطار الصورة الشخصية */
@@ -160,7 +158,7 @@
             to { transform: rotate(360deg); }
         }
 
-        /* زر الدخول مع أنيميشن اللمس والضغط */
+        /* زر الدخول - شفاف بالكامل وبدون أي تغويش */
         .login-btn {
             display: flex;
             justify-content: center;
@@ -170,26 +168,28 @@
             padding: 13px;
             margin-top: 15px;
             border-radius: 14px;
-            background: rgba(0, 242, 254, 0.10);
-            border: 1px solid rgba(0, 242, 254, 0.25);
+            background: transparent !important; /* شفاف */
+            backdrop-filter: none !important; /* بدون تغويش */
+            border: 2px solid rgba(0, 242, 254, 0.6); 
             color: #00f2fe;
             text-decoration: none;
             font-weight: bold;
             transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
             user-select: none;
+            box-shadow: 0 0 10px rgba(0, 242, 254, 0.2);
+            text-shadow: 1px 1px 2px #000;
         }
 
         .login-btn:hover {
-            background: #00f2fe;
+            background: #00f2fe !important;
             color: #000;
             transform: translateY(-3px);
-            box-shadow: 0 5px 20px rgba(0, 242, 254, 0.4);
+            box-shadow: 0 5px 20px rgba(0, 242, 254, 0.5);
+            text-shadow: none;
         }
 
         .login-btn:active {
             transform: scale(0.95) translateY(0);
-            box-shadow: 0 2px 5px rgba(0, 242, 254, 0.2);
-            background: rgba(0, 242, 254, 0.85);
         }
 
         /* أقسام التواصل الإجتماعي */
@@ -197,6 +197,7 @@
             margin-top: 18px;
         }
 
+        /* كروت التواصل - شفافة تماماً وبدون أي تغويش */
         .contact-card {
             display: flex;
             justify-content: space-between;
@@ -204,8 +205,9 @@
             padding: 14px;
             margin-bottom: 10px;
             border-radius: 14px;
-            background: rgba(255, 255, 255, 0.04);
-            border: 1px solid rgba(0, 242, 254, 0.15);
+            background: transparent !important; /* شفاف */
+            backdrop-filter: none !important; /* بدون تغويش */
+            border: 1px solid rgba(0, 242, 254, 0.4);
             text-decoration: none;
             color: #fff;
             transition: all 0.3s ease;
@@ -214,12 +216,8 @@
         .contact-card:hover {
             transform: translateY(-4px);
             border-color: #00f2fe;
-            background: rgba(0, 242, 254, 0.05);
-            box-shadow: 0 5px 15px rgba(0, 242, 254, 0.1);
-        }
-
-        .contact-card:active {
-            transform: scale(0.98);
+            background: rgba(0, 242, 254, 0.1) !important;
+            box-shadow: 0 5px 15px rgba(0, 242, 254, 0.2);
         }
 
         .contact-card i {
@@ -233,13 +231,15 @@
 
         .info span {
             font-size: 0.75rem;
-            color: #aaa;
+            color: #ccc;
             display: block;
+            text-shadow: 1px 1px 2px #000;
         }
 
         .info p {
             margin-top: 3px;
             font-weight: bold;
+            text-shadow: 1px 1px 2px #000;
         }
     </style>
 </head>
@@ -326,7 +326,7 @@
             }, 200);
         }, 3000);
 
-        // برمجة زر الصوت (جديد)
+        // برمجة زر الصوت
         const video = document.getElementById('bgVideo');
         const volumeBtn = document.getElementById('volumeBtn');
         const volumeIcon = document.getElementById('volumeIcon');
@@ -334,18 +334,18 @@
         volumeBtn.addEventListener('click', () => {
             if (video.muted) {
                 video.muted = false;
-                volumeIcon.className = "fa-solid fa-volume-high"; // تغيير الأيقونة إلى صوت مسموع
+                volumeIcon.className = "fa-solid fa-volume-high";
             } else {
                 video.muted = true;
-                volumeIcon.className = "fa-solid fa-volume-xmark"; // تغيير الأيقونة إلى كتم
+                volumeIcon.className = "fa-solid fa-volume-xmark";
             }
         });
 
-        // تشغيل الفيديو التلقائي الآمن عند تحميل الصفحة
+        // تشغيل الفيديو التلقائي
         document.addEventListener('DOMContentLoaded', () => {
             if (video) {
                 video.play().catch(error => {
-                    console.log("تم تهيئة نظام الصوت بنجاح.", error);
+                    console.log("نظام الخلفية جاهز.", error);
                 });
             }
         });
