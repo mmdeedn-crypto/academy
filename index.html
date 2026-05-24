@@ -47,6 +47,40 @@
             z-index: -1;
         }
 
+        /* زر التحكم بالصوت العائم (جديد) */
+        .volume-control-btn {
+            position: fixed;
+            top: 20px;
+            left: 20px; /* تم وضعه جهة اليسار ليتناسق مع التصفح العربي RTL */
+            z-index: 100;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: rgba(0, 242, 254, 0.1);
+            border: 1px solid rgba(0, 242, 254, 0.4);
+            color: #00f2fe;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            font-size: 1.1rem;
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+            transition: all 0.3s ease;
+            box-shadow: 0 0 10px rgba(0, 242, 254, 0.2);
+        }
+
+        .volume-control-btn:hover {
+            background: #00f2fe;
+            color: #000;
+            transform: scale(1.08);
+            box-shadow: 0 0 15px rgba(0, 242, 254, 0.5);
+        }
+
+        .volume-control-btn:active {
+            transform: scale(0.92);
+        }
+
         /* الكارت الرئيسي */
         .cyber-card {
             width: 100%;
@@ -141,11 +175,10 @@
             color: #00f2fe;
             text-decoration: none;
             font-weight: bold;
-            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1); /* انتقال سلس فائق الاستجابة */
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
             user-select: none;
         }
 
-        /* أنيميشن عند حرك الماوس فوق الزر */
         .login-btn:hover {
             background: #00f2fe;
             color: #000;
@@ -153,9 +186,8 @@
             box-shadow: 0 5px 20px rgba(0, 242, 254, 0.4);
         }
 
-        /* أنيميشن الضغط الفعلي (Click / Press Animation) */
         .login-btn:active {
-            transform: scale(0.95) translateY(0); /* يصغر الزر قليلاً ويعود لمكانه لإعطاء إيحاء بالضغط السلوكي */
+            transform: scale(0.95) translateY(0);
             box-shadow: 0 2px 5px rgba(0, 242, 254, 0.2);
             background: rgba(0, 242, 254, 0.85);
         }
@@ -213,6 +245,10 @@
 </head>
 
 <body>
+
+    <button class="volume-control-btn" id="volumeBtn" title="تشغيل/كتم الصوت">
+        <i class="fa-solid fa-volume-xmark" id="volumeIcon"></i>
+    </button>
 
     <video id="bgVideo" autoplay loop muted playsinline class="background-video">
         <source src="video.mp4" type="video/mp4">
@@ -290,12 +326,26 @@
             }, 200);
         }, 3000);
 
-        // تشغيل الفيديو التلقائي الآمن
+        // برمجة زر الصوت (جديد)
+        const video = document.getElementById('bgVideo');
+        const volumeBtn = document.getElementById('volumeBtn');
+        const volumeIcon = document.getElementById('volumeIcon');
+
+        volumeBtn.addEventListener('click', () => {
+            if (video.muted) {
+                video.muted = false;
+                volumeIcon.className = "fa-solid fa-volume-high"; // تغيير الأيقونة إلى صوت مسموع
+            } else {
+                video.muted = true;
+                volumeIcon.className = "fa-solid fa-volume-xmark"; // تغيير الأيقونة إلى كتم
+            }
+        });
+
+        // تشغيل الفيديو التلقائي الآمن عند تحميل الصفحة
         document.addEventListener('DOMContentLoaded', () => {
-            const video = document.getElementById('bgVideo');
             if (video) {
                 video.play().catch(error => {
-                    console.log("إشعار الخلفية النشطة جاهز.", error);
+                    console.log("تم تهيئة نظام الصوت بنجاح.", error);
                 });
             }
         });
